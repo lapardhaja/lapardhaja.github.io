@@ -45,9 +45,91 @@
 			.publication-list li h3 {
 				margin-bottom: 5px; /* Add space below the title */
 			}
+
+			/* Mobile Sidebar Toggle Button Styles */
+			#mobileSidebarToggle {
+			position: fixed;
+			top: 10px; /* Adjust the top position as needed */
+			left: 10px; /* Adjust the left position as needed */
+			cursor: pointer;
+			z-index: 1100; /* Make sure it's above the sidebar */
+			display: flex;
+			flex-direction: column;
+			}
+
+			#mobileSidebarToggle span {
+			display: block;
+			height: 3px;
+			width: 20px; /* Adjust the width of the lines as needed */
+			background-color: white;
+			margin-bottom: 5px; /* Adjust the spacing between lines as needed */
+			}
+
+			#mobileSidebar {
+				display: none;
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background: rgba(0, 0, 0, 0.9);
+				z-index: 1000;
+			}
+
+			#mobileSidebar nav {
+				margin-top: 40px;
+			}
+
+
+			#mobileSidebar a {
+			text-decoration: none; /* Remove underline for all links inside the sidebar */
+			color: #000; /* Change the color if needed */
+			display: block;
+			padding: 10px;
+			border-bottom: 1px solid #cccccc3f; /* Add a horizontal line between options */
+			}
+
+			#mobileSidebar ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			#mobileSidebar ul li {
+				padding: 10px;
+				text-align: center;
+			}
+
+			#mobileSidebar ul li a {
+				color: white;
+				text-decoration: none;
+				font-size: 18px;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
+		<!-- Mobile Sidebar Toggle Button -->
+		<div id="mobileSidebarToggle" class="menu-icon">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<!-- Mobile Sidebar -->
+		<div id="mobileSidebar">
+			<nav>
+				<ul>
+					<li><a href="#intro" onclick="closeSidebar()">Home </a></li>
+					<li><a href="#about" onclick="closeSidebar()">About</a></li>
+					<li><a href="#experience" onclick="closeSidebar()">Experience</a></li>
+					<li><a href="#education" onclick="closeSidebar()">Education</a></li>
+					<li><a href="#skills" onclick="closeSidebar()">Skills</a></li>
+					<li><a href="#licenses" onclick="closeSidebar()">Licenses</a></li>
+					<li><a href="#publications" onclick="closeSidebar()">Publications</a></li>
+					<li><a href="#recognitions" onclick="closeSidebar()">Recognitions</a></li>
+					<li><a href="#contact" onclick="closeSidebar()">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
@@ -540,6 +622,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/sidebar.js"></script>
 		</div>
 	</body>
 </html>
