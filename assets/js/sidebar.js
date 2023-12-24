@@ -1,8 +1,9 @@
-function toggleSidebar() {
-    var sidebar = document.querySelector('.mobile-sidebar');
-    if (sidebar.style.left === "0px") {
-        sidebar.style.left = "-250px";
-    } else {
-        sidebar.style.left = "0px";
+$(document).ready(function () {
+    $("#mobileSidebarToggle").click(function () {
+        $("#mobileSidebar").fadeToggle();
+    });
+
+    function closeSidebar() {
+        $("#mobileSidebar").fadeOut();
     }
-}
+});
