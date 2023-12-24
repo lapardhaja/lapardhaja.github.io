@@ -3,7 +3,8 @@ $(document).ready(function () {
         $("#mobileSidebar").fadeToggle();
     });
 
-    function closeSidebar() {
-        $("#mobileSidebar").fadeOut();
-    }
+    // Close sidebar when an option is clicked
+    $("#mobileSidebar a").click(function () {
+        $("#mobileSidebar").hide();
+    });
 });
