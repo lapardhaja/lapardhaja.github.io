@@ -65,15 +65,50 @@
 			width: 100%;
 		}
 
+		/* Fix for author names in publications */
+		.publication-item .authors {
+			text-align: left;
+		}
+
 		/* Mobile styles for publications */
 		@media (max-width: 768px) {
 			.author-name {
-				display: inline;
-				text-align: left;
+				display: inline !important;
+				text-align: left !important;
+				position: relative;
 			}
 			
 			p.authors {
-				text-align: left;
+				text-align: left !important;
+				display: inline-block !important;
+				width: 100%;
+			}
+			
+			.publication-item {
+				text-align: left !important;
+			}
+			
+			.publication-item * {
+				text-align: left !important;
+			}
+			
+			.publication-item .publication-header {
+				text-align: left !important;
+			}
+			
+			.publication-item .journal,
+			.publication-item .conference {
+				text-align: left !important;
+				width: 100%;
+				display: block;
+			}
+			
+			/* Override any potential centering */
+			.publication-item .authors,
+			.publication-item .authors * {
+				text-align: left !important;
+				justify-content: flex-start !important;
+				align-items: flex-start !important;
 			}
 		}
 

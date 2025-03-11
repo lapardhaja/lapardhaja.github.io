@@ -587,14 +587,48 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .publication-item {
-        text-align: left;
+        text-align: left !important;
     }
     
-    .publication-item .authors,
+    .publication-item * {
+        text-align: left !important;
+    }
+    
+    .publication-item .authors {
+        display: inline-block !important;
+        text-align: left !important;
+        width: 100%;
+    }
+    
+    .publication-item .authors .author-name {
+        display: inline !important;
+        text-align: left !important;
+        position: relative;
+    }
+    
+    .publication-item .authors .author-name::after {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+    }
+    
+    .publication-item:hover .authors .author-name::after {
+        width: 100%;
+    }
+    
+    p.authors {
+        text-align: left !important;
+        display: inline-block !important;
+        width: 100%;
+    }
+    
     .publication-item .journal,
     .publication-item .conference {
-        text-align: left;
+        text-align: left !important;
         width: 100%;
+        display: block;
     }
 }
 
@@ -1426,5 +1460,27 @@ h1, h2, h3, h4, h5, h6 {
     
     .licenses-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Fix for author names in publications */
+.publication-item .authors {
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    /* Override any potential centering */
+    .publication-item .authors,
+    .publication-item .authors * {
+        text-align: left !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+    }
+    
+    /* Fix for the specific issue with author names */
+    .authors {
+        text-align: left !important;
+        display: inline-block !important;
+        width: 100% !important;
     }
 } 
