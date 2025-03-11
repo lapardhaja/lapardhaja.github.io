@@ -46,8 +46,8 @@
 		/* Author name hover effect */
 		.author-name {
 			position: relative;
-			display: inline;
-			text-align: left !important;
+			display: inline-block;
+			text-align: left;
 		}
 
 		.author-name::after {
@@ -69,21 +69,11 @@
 		@media (max-width: 768px) {
 			.author-name {
 				display: inline;
-				text-align: left !important;
-				position: static;
-			}
-			
-			.author-name::after {
-				display: none;
+				text-align: left;
 			}
 			
 			p.authors {
-				text-align: left !important;
-				display: block;
-			}
-			
-			.publication-item {
-				text-align: left !important;
+				text-align: left;
 			}
 		}
 

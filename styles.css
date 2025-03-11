@@ -587,36 +587,13 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .publication-item {
-        text-align: left !important;
+        text-align: left;
     }
     
-    .publication-item .authors {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
-        text-align: left !important;
-        width: 100%;
-        display: block;
-    }
-    
-    .publication-item .authors .author-name {
-        text-align: left !important;
-        display: inline;
-        position: static;
-    }
-    
-    .publication-item .authors .author-name::after {
-        display: none;
-    }
-    
-    .publication-item p.authors {
-        text-align: left !important;
-        display: block;
-    }
-    
+    .publication-item .authors,
     .publication-item .journal,
     .publication-item .conference {
-        text-align: left !important;
+        text-align: left;
         width: 100%;
     }
 }

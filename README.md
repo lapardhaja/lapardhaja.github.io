@@ -1,6 +1,6 @@
 # Dr. Servet Lapardhaja - Portfolio Website
 
-Welcome to the repository for my personal portfolio website. This site showcases my journey as a Transportation Engineer, from my academic foundations at UC Berkeley to my professional work at HNTB.
+Welcome to the repository for my personal portfolio website. This site showcases my journey as a Transportation Engineer, from my academic foundations at UC Berkeley to my professional work.
 
 ## About Me
 
