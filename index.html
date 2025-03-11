@@ -47,6 +47,7 @@
 		.author-name {
 			position: relative;
 			display: inline-block;
+			text-align: left;
 		}
 
 		.author-name::after {
@@ -62,6 +63,18 @@
 
 		.publication-item:hover .author-name::after {
 			width: 100%;
+		}
+
+		/* Mobile styles for publications */
+		@media (max-width: 768px) {
+			.author-name {
+				display: inline;
+				text-align: left;
+			}
+			
+			p.authors {
+				text-align: left;
+			}
 		}
 
 		/* Mobile Sidebar Toggle Button Styles */

@@ -585,6 +585,17 @@ h1, h2, h3, h4, h5, h6 {
     .section-title {
         font-size: 2rem;
     }
+
+    .publication-item {
+        text-align: left;
+    }
+    
+    .publication-item .authors,
+    .publication-item .journal,
+    .publication-item .conference {
+        text-align: left;
+        width: 100%;
+    }
 }
 
 /* Utility Classes */
@@ -723,6 +734,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-align: left;
 }
 
 .publication-item .authors .year {
@@ -801,11 +813,22 @@ h1, h2, h3, h4, h5, h6 {
     .publication-item .authors {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.5rem;
+        gap: 0.25rem;
+        text-align: left !important;
+        width: 100%;
+    }
+    
+    .publication-item .authors .author-name {
+        text-align: left !important;
+        display: inline;
     }
     
     .publication-item .authors .year {
         align-self: flex-start;
+    }
+    
+    p.authors {
+        text-align: left !important;
     }
 }
 
@@ -1074,6 +1097,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-align: left;
 }
 
 .publication-item .authors .year {
