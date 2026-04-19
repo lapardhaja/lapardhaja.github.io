@@ -13,7 +13,7 @@ This portfolio serves as a comprehensive showcase of my:
 - Academic background, including my Ph.D. research
 - Publications in transportation engineering and related fields
 - Technical skills in programming, simulation, and analysis
-- Awards and recognitions
+- Awards and recognition
 
 ## Key Features
 
