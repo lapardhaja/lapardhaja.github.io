@@ -149,16 +149,13 @@ document.querySelectorAll('.timeline-content').forEach(box => {
     });
 });
 
-// Recognition items collapsible functionality
+// Recognition accordion: only one open at a time; click open card again to close
 document.querySelectorAll('.recognition-item').forEach(item => {
     item.addEventListener('click', () => {
-        // Close other items
-        document.querySelectorAll('.recognition-item').forEach(otherItem => {
-            if (otherItem !== item) {
-                otherItem.classList.remove('expanded');
-            }
-        });
-        // Toggle current item
-        item.classList.toggle('expanded');
-    });
-}); 
+        const wasOpen = item.classList.contains('expanded')
+        document.querySelectorAll('.recognition-item').forEach(el => el.classList.remove('expanded'))
+        if (!wasOpen) {
+            item.classList.add('expanded')
+        }
+    })
+}) 
