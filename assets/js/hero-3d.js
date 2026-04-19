@@ -1,5 +1,5 @@
 /**
- * Hero WebGL background — Three.js (loads from CDN via import map)
+ * Hero WebGL — transportation-themed: roadway, lane traffic, network overlay (Three.js)
  */
 import * as THREE from 'three'
 
@@ -26,8 +26,13 @@ function init() {
 
     const scene = new THREE.Scene()
 
-    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100)
-    camera.position.set(0, 0.2, 5.2)
+    const cyan = 0x38bdf8
+    const mint = 0x34d399
+    const asphalt = 0x151d2e
+
+    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100)
+    camera.position.set(0, 1.15, 5.1)
+    camera.lookAt(0, -0.35, -4)
 
     const renderer = new THREE.WebGLRenderer({
         canvas,
@@ -38,100 +43,162 @@ function init() {
     renderer.setClearColor(0x000000, 0)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
-    const cyan = 0x38bdf8
-    const mint = 0x34d399
+    scene.add(new THREE.AmbientLight(0x445566, 0.45))
 
-    const ambient = new THREE.AmbientLight(0x404060, 0.35)
-    scene.add(ambient)
+    const sun = new THREE.DirectionalLight(0xffffff, 0.55)
+    sun.position.set(-3, 8, 6)
+    scene.add(sun)
 
-    const key = new THREE.DirectionalLight(0xffffff, 0.85)
-    key.position.set(4, 6, 5)
-    scene.add(key)
+    const fill = new THREE.DirectionalLight(cyan, 0.35)
+    fill.position.set(5, 2, -2)
+    scene.add(fill)
 
-    const ptA = new THREE.PointLight(cyan, 1.2, 12)
-    ptA.position.set(-2.5, 1, 2)
-    scene.add(ptA)
+    const rim = new THREE.PointLight(mint, 0.6, 18)
+    rim.position.set(3, 0.5, 2)
+    scene.add(rim)
 
-    const ptB = new THREE.PointLight(mint, 1.0, 12)
-    ptB.position.set(2.5, -1, 2)
-    scene.add(ptB)
+    const world = new THREE.Group()
+    scene.add(world)
 
-    const mainGroup = new THREE.Group()
-    scene.add(mainGroup)
+    // --- Road deck (stylized freeway segment receding into the distance)
+    const roadGeo = new THREE.BoxGeometry(6.2, 0.06, 20)
+    const roadMat = new THREE.MeshStandardMaterial({
+        color: asphalt,
+        roughness: 0.92,
+        metalness: 0.08,
+    })
+    const road = new THREE.Mesh(roadGeo, roadMat)
+    road.position.set(0, -1.05, -1.2)
+    world.add(road)
 
-    const coreGeo = new THREE.IcosahedronGeometry(1.15, 1)
-    const coreMat = new THREE.MeshStandardMaterial({
-        color: 0x0c1222,
+    // Edge barriers / shoulders (subtle)
+    const edgeGeo = new THREE.BoxGeometry(6.4, 0.04, 20)
+    const edgeMat = new THREE.MeshStandardMaterial({
+        color: 0x0d1522,
+        roughness: 0.85,
+    })
+    const edgeL = new THREE.Mesh(edgeGeo, edgeMat)
+    edgeL.position.set(-3.15, -1.02, -1.2)
+    const edgeR = edgeL.clone()
+    edgeR.position.x = 3.15
+    world.add(edgeL, edgeR)
+
+    // Dashed lane markings (instanced thin boxes)
+    const dashLen = 0.45
+    const dashGap = 0.38
+    const dashGeo = new THREE.BoxGeometry(0.06, 0.02, dashLen)
+    const dashMat = new THREE.MeshBasicMaterial({
+        color: 0xe2e8f0,
+        transparent: true,
+        opacity: 0.55,
+    })
+    const dashesPerStripe = 14
+    const stripeCount = 2
+    const dashCount = dashesPerStripe * stripeCount
+    const dashes = new THREE.InstancedMesh(dashGeo, dashMat, dashCount)
+    const dashDummy = new THREE.Object3D()
+    let di = 0
+    const stripeX = [-1.02, 1.02]
+    const zStart = 2.5
+    for (let s = 0; s < stripeCount; s++) {
+        for (let d = 0; d < dashesPerStripe; d++) {
+            const z = zStart - d * (dashLen + dashGap)
+            dashDummy.position.set(stripeX[s], -0.98, -1.2 + z)
+            dashDummy.updateMatrix()
+            dashes.setMatrixAt(di++, dashDummy.matrix)
+        }
+    }
+    dashes.instanceMatrix.needsUpdate = true
+    world.add(dashes)
+
+    // --- Vehicles: instanced boxes in 3 lanes (traffic flow along -Z)
+    const laneXs = [-1.55, 0, 1.55]
+    const carsPerLane = 10
+    const carCount = laneXs.length * carsPerLane
+    const carGeo = new THREE.BoxGeometry(0.34, 0.14, 0.2)
+    const carMat = new THREE.MeshStandardMaterial({
+        color: 0x1e293b,
         emissive: cyan,
-        emissiveIntensity: 0.35,
-        metalness: 0.65,
-        roughness: 0.25,
-        flatShading: true,
+        emissiveIntensity: 0.25,
+        metalness: 0.55,
+        roughness: 0.35,
     })
-    const core = new THREE.Mesh(coreGeo, coreMat)
-    mainGroup.add(core)
+    const cars = new THREE.InstancedMesh(carGeo, carMat, carCount)
+    const carDummy = new THREE.Object3D()
+    const carZ = new Float32Array(carCount)
+    const carSpeed = new Float32Array(carCount)
+    let ci = 0
+    for (let L = 0; L < laneXs.length; L++) {
+        for (let k = 0; k < carsPerLane; k++) {
+            const idx = ci++
+            carZ[idx] = 4 - k * 2.1 - L * 0.17
+            carSpeed[idx] = 2.2 + (idx % 5) * 0.35 + Math.random() * 0.4
+            carDummy.position.set(laneXs[L], -0.92, -1.2 + carZ[idx])
+            carDummy.rotation.y = Math.PI
+            carDummy.updateMatrix()
+            cars.setMatrixAt(idx, carDummy.matrix)
+        }
+    }
+    cars.instanceMatrix.needsUpdate = true
+    world.add(cars)
 
-    const ringGeo = new THREE.TorusGeometry(1.85, 0.02, 16, 100)
-    const ringMat = new THREE.MeshBasicMaterial({
-        color: cyan,
-        transparent: true,
-        opacity: 0.45,
-    })
-    const ring = new THREE.Mesh(ringGeo, ringMat)
-    ring.rotation.x = Math.PI / 2.3
-    mainGroup.add(ring)
-
-    const ring2 = ring.clone()
-    ring2.scale.setScalar(1.12)
-    ring2.material = ringMat.clone()
-    ring2.material.opacity = 0.22
-    ring2.rotation.z = 0.4
-    mainGroup.add(ring2)
-
-    const nodeCount = 48
-    const nodeGeo = new THREE.SphereGeometry(0.08, 12, 12)
+    // --- Network / systems overlay: nodes + edges (OD graph, transit network abstraction)
+    const nodePositions = [
+        new THREE.Vector3(-2.2, 0.35, -0.5),
+        new THREE.Vector3(0, 0.55, -2.8),
+        new THREE.Vector3(2.1, 0.4, -1.2),
+        new THREE.Vector3(-1.4, 0.45, -4.2),
+        new THREE.Vector3(1.6, 0.5, -5),
+    ]
+    const nodeGeo = new THREE.SphereGeometry(0.07, 10, 10)
     const nodeMat = new THREE.MeshStandardMaterial({
-        color: 0xffffff,
+        color: mint,
         emissive: mint,
-        emissiveIntensity: 0.8,
-        metalness: 0.3,
-        roughness: 0.4,
-    })
-    const nodes = new THREE.InstancedMesh(nodeGeo, nodeMat, nodeCount)
-    const dummy = new THREE.Object3D()
-    const r = 2.15
-    const golden = Math.PI * (3 - Math.sqrt(5))
-    for (let i = 0; i < nodeCount; i++) {
-        const y = 1 - (i / Math.max(1, nodeCount - 1)) * 2
-        const rad = Math.sqrt(1 - y * y)
-        const theta = golden * i
-        dummy.position.set(Math.cos(theta) * rad * r, y * r, Math.sin(theta) * rad * r)
-        dummy.updateMatrix()
-        nodes.setMatrixAt(i, dummy.matrix)
-    }
-    nodes.instanceMatrix.needsUpdate = true
-    mainGroup.add(nodes)
-
-    const particleCount = 900
-    const positions = new Float32Array(particleCount * 3)
-    for (let i = 0; i < particleCount; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 14
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 10
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 8 - 2
-    }
-    const pGeo = new THREE.BufferGeometry()
-    pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-    const pMat = new THREE.PointsMaterial({
-        color: cyan,
-        size: 0.035,
+        emissiveIntensity: 0.9,
+        metalness: 0.2,
+        roughness: 0.5,
         transparent: true,
-        opacity: 0.5,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending,
+        opacity: 0.9,
     })
-    const dust = new THREE.Points(pGeo, pMat)
-    dust.position.z = -1
-    scene.add(dust)
+    const nodes = new THREE.InstancedMesh(nodeGeo, nodeMat, nodePositions.length)
+    const nodeDummy = new THREE.Object3D()
+    nodePositions.forEach((p, i) => {
+        nodeDummy.position.copy(p)
+        nodeDummy.updateMatrix()
+        nodes.setMatrixAt(i, nodeDummy.matrix)
+    })
+    nodes.instanceMatrix.needsUpdate = true
+    world.add(nodes)
+
+    const edgePairs = [
+        [0, 1],
+        [1, 2],
+        [1, 3],
+        [2, 4],
+        [3, 4],
+    ]
+    const edgeMat = new THREE.LineBasicMaterial({
+        color: cyan,
+        transparent: true,
+        opacity: 0.35,
+    })
+    edgePairs.forEach(([a, b]) => {
+        const geo = new THREE.BufferGeometry().setFromPoints([nodePositions[a], nodePositions[b]])
+        world.add(new THREE.Line(geo, edgeMat))
+    })
+
+    // Subtle horizon glow (urban night)
+    const glowGeo = new THREE.PlaneGeometry(24, 8)
+    const glowMat = new THREE.MeshBasicMaterial({
+        color: cyan,
+        transparent: true,
+        opacity: 0.04,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+    })
+    const glow = new THREE.Mesh(glowGeo, glowMat)
+    glow.position.set(0, -0.2, -12)
+    world.add(glow)
 
     let width = 0
     let height = 0
@@ -150,10 +217,9 @@ function init() {
     ro.observe(container)
 
     let running = true
-    const onVis = () => {
+    document.addEventListener('visibilitychange', () => {
         running = !document.hidden
-    }
-    document.addEventListener('visibilitychange', onVis)
+    })
 
     const clock = new THREE.Clock()
     let t = 0
@@ -165,18 +231,25 @@ function init() {
         const dt = clock.getDelta()
         t += dt
 
-        mainGroup.rotation.y += 0.35 * dt
-        mainGroup.rotation.x = Math.sin(t * 0.25) * 0.12
-        ring.rotation.z += 0.4 * dt
-        ring2.rotation.z -= 0.25 * dt
-        dust.rotation.y += 0.05 * dt
+        // Traffic: advance along road (-Z direction in world space)
+        ci = 0
+        for (let L = 0; L < laneXs.length; L++) {
+            for (let k = 0; k < carsPerLane; k++) {
+                const idx = ci++
+                carZ[idx] -= carSpeed[idx] * dt
+                if (carZ[idx] < -11) carZ[idx] = 7
+                carDummy.position.set(laneXs[L], -0.92, -1.2 + carZ[idx])
+                carDummy.rotation.y = Math.PI
+                carDummy.updateMatrix()
+                cars.setMatrixAt(idx, carDummy.matrix)
+            }
+        }
+        cars.instanceMatrix.needsUpdate = true
 
-        camera.position.x = Math.sin(t * 0.15) * 0.15
-        camera.position.y = Math.cos(t * 0.12) * 0.08
-        camera.lookAt(0, 0, 0)
-
-        ptA.position.x = -2.5 + Math.sin(t * 0.7) * 0.4
-        ptB.position.x = 2.5 + Math.cos(t * 0.55) * 0.35
+        camera.position.x = Math.sin(t * 0.2) * 0.06
+        camera.position.y = 1.15 + Math.cos(t * 0.15) * 0.04
+        camera.lookAt(0, -0.35, -4)
+        rim.position.x = 2.8 + Math.sin(t * 0.5) * 0.2
 
         renderer.render(scene, camera)
     }
