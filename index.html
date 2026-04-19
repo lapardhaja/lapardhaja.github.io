@@ -4,236 +4,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Dr. Servet Lapardhaja — Engineering Portofolio. AI Engineer (U.S. Treasury), Ph.D. Transportation Engineering, UC Berkeley">
-	<meta name="theme-color" content="#ffffff">
+	<meta name="theme-color" content="#0b1120">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Servet Lapardhaja | AI & Transportation Engineering">
+	<meta property="og:description" content="Engineering portfolio — AI, machine learning, transportation systems, and research.">
+	<meta property="og:url" content="https://lapardhaja.com/">
+	<meta property="og:image" content="https://lapardhaja.com/images/og-cover.svg">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Servet Lapardhaja | AI & Transportation Engineering">
+	<meta name="twitter:description" content="Engineering portfolio — AI, machine learning, transportation systems, and research.">
+	<meta name="twitter:image" content="https://lapardhaja.com/images/og-cover.svg">
 	<title>Servet Lapardhaja | AI & Transportation Engineering</title>
 	<link rel="icon" href="images/Logo.png" type="image/x-icon">
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-	<!-- Style for smaller text -->
-	<style>
-		.small-text {
-			font-size: 24px; /* Adjust the size as needed */
-			line-height: 1; /* Adjust the line height as needed */
-		}
-
-		.company-logo {
-			max-width: 75px; /* Adjust the maximum width as needed */
-			height: auto; /* Maintain aspect ratio */
-		}
-
-		#licenses a {
-			text-decoration: none;
-			border-bottom: none; /* Removes any dotted or solid lines under the link */
-			color: inherit;
-		}
-
-		#publications a {
-			text-decoration: none;
-			border-bottom: none; /* Removes any dotted or solid lines under the link */
-		}
-
-		/* Style for the publication list */
-		.publication-list {
-			list-style-type: decimal; /* Use decimal numbering (1, 2, 3, ...) */
-			padding-left: 20px; /* Add some left padding for better readability */
-		}
-
-		/* Style for publication titles */
-		.publication-list li h3 {
-			margin-bottom: 5px; /* Add space below the title */
-		}
-
-		/* Author name hover effect */
-		.author-name {
-			position: relative;
-			display: inline-block;
-			text-align: left;
-		}
-
-		.author-name::after {
-			content: '';
-			position: absolute;
-			width: 0;
-			height: 2px;
-			bottom: -2px;
-			left: 0;
-			background-color: #007bff;
-			transition: width 0.3s ease;
-		}
-
-		.publication-item:hover .author-name::after {
-			width: 100%;
-		}
-
-		/* Fix for author names in publications */
-		.publication-item .authors {
-			text-align: left;
-		}
-
-		/* Mobile styles for publications */
-		@media (max-width: 768px) {
-			.author-name {
-				display: inline !important;
-				text-align: left !important;
-				position: relative;
-			}
-			
-			p.authors {
-				text-align: left !important;
-				display: inline-block !important;
-				width: 100%;
-			}
-			
-			.publication-item {
-				text-align: left !important;
-			}
-			
-			.publication-item * {
-				text-align: left !important;
-			}
-			
-			.publication-item .publication-header {
-				text-align: left !important;
-			}
-			
-			.publication-item .journal,
-			.publication-item .conference {
-				text-align: left !important;
-				width: 100%;
-				display: block;
-			}
-			
-			/* Override any potential centering */
-			.publication-item .authors,
-			.publication-item .authors * {
-				text-align: left !important;
-				justify-content: flex-start !important;
-				align-items: flex-start !important;
-			}
-		}
-
-		/* Mobile Sidebar Toggle Button Styles */
-		#mobileSidebarToggle {
-			position: fixed;
-			top: 10px; /* Adjust the top position as needed */
-			left: 10px; /* Adjust the left position as needed */
-			cursor: pointer;
-			z-index: 1100; /* Make sure it's above the sidebar */
-			display: flex;
-			flex-direction: column;
-		}
-
-		#mobileSidebarToggle span {
-			display: block;
-			height: 3px;
-			width: 20px; /* Adjust the width of the lines as needed */
-			background-color: white;
-			margin-bottom: 5px; /* Adjust the spacing between lines as needed */
-		}
-
-		#mobileSidebar {
-			display: none;
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			background: rgba(0, 0, 0, 0.9);
-			z-index: 1000;
-		}
-
-		#mobileSidebar nav {
-			margin-top: 40px;
-		}
-
-		#mobileSidebar a {
-			text-decoration: none; /* Remove underline for all links inside the sidebar */
-			color: #000; /* Change the color if needed */
-			display: block;
-			padding: 10px;
-			border-bottom: 1px solid #cccccc3f; /* Add a horizontal line between options */
-		}
-
-		#mobileSidebar ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
-		}
-
-		#mobileSidebar ul li {
-			padding: 10px;
-			text-align: center;
-		}
-
-		#mobileSidebar ul li a {
-			color: white;
-			text-decoration: none;
-			font-size: 18px;
-		}
-
-		.contact-form {
-			max-width: 500px; /* Make the form narrower */
-			margin: 0 auto;
-		}
-
-		.contact-form textarea {
-			height: 100px; /* Make the message box shorter */
-		}
-
-		.contact-details {
-			font-size: 1.1em; /* Increase font size for contact details */
-			line-height: 1.6; /* Add some line height for better readability */
-		}
-
-		.contact-details p {
-			margin-bottom: 10px; /* Add some space between contact details */
-		}
-
-		.contact-info h3 {
-			font-size: 1.5em; /* Make the "Get in Touch" heading larger */
-			margin-bottom: 20px; /* Add some space below the heading */
-		}
-
-		/* Progress bar styles */
-		.progress-bar {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 0%;
-			height: 4px;
-			background: linear-gradient(to right, #4CAF50, #00BCD4);
-			z-index: 9999;
-			transition: width 0.2s ease-out;
-			box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-		}
-
-		/* Add smooth scrolling to the page */
-		html {
-			scroll-behavior: smooth;
-		}
-
-		/* Custom Scrollbar Styles */
-		::-webkit-scrollbar {
-			width: 12px;
-		}
-
-		::-webkit-scrollbar-track {
-			background: #f1f1f1;
-			border-radius: 6px;
-		}
-
-		::-webkit-scrollbar-thumb {
-			background: linear-gradient(45deg, #007bff, #00a5ff);
-			border-radius: 6px;
-			border: 2px solid #f1f1f1;
-		}
-
-		::-webkit-scrollbar-thumb:hover {
-			background: linear-gradient(45deg, #0056b3, #0098eb);
-		}
-	</style>
 </head>
-<body>
+<body class="page-shell">
 	<!-- Add progress bar at the top -->
 	<div class="progress-bar"></div>
 	<header class="header">
@@ -261,27 +47,50 @@
 
 	<main>
 		<section id="hero" class="hero">
-			<div class="hero-background">
-				<div class="particle"></div>
-				<div class="particle"></div>
-				<div class="particle"></div>
-				<div class="particle"></div>
-				<div class="particle"></div>
-			</div>
 			<div class="container">
-				<div class="hero-content">
-					<div class="hero-text-animation">
+				<div class="hero-grid">
+					<div class="hero-copy">
+						<p class="hero-eyebrow">Engineering portfolio</p>
 						<h1 class="hero-title">
-							<span class="gradient-text glitch" data-text="Servet Lapardhaja">Servet Lapardhaja, Ph.D.</span>
+							<span class="gradient-text">Servet Lapardhaja</span>, Ph.D.
 						</h1>
-						<div class="typing-container">
-							<span class="typing-text">AI & Transportation Engineer</span>
+						<p class="hero-role">AI &amp; Transportation Engineer</p>
+						<p class="hero-description">
+							Welcome—AI Engineer with the U.S. Department of the Treasury and a Ph.D. in Transportation Engineering from UC Berkeley. Work at the intersection of machine learning, data-driven systems, and transportation.
+						</p>
+						<div class="hero-actions">
+							<a href="#about" class="cta-button">About</a>
+							<a href="#publications" class="cta-button cta-button--ghost">Publications</a>
 						</div>
 					</div>
-					<p class="hero-description slide-up">
-						Welcome to the portfolio of Dr. Servet Lapardhaja—AI Engineer with the U.S. Department of the Treasury and a Ph.D. in Transportation Engineering from the University of California, Berkeley. Explore his work at the intersection of machine learning, data-driven systems, and transportation.
-					</p>
-					<a href="#about" class="cta-button pulse">Learn more</a>
+					<div class="hero-visual" aria-hidden="true">
+						<div class="hero-card">
+							<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract network and flow visualization">
+								<defs>
+									<linearGradient id="hvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+										<stop offset="0%" style="stop-color:#38bdf8;stop-opacity:1" />
+										<stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+									</linearGradient>
+									<filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+										<feGaussianBlur stdDeviation="3" result="b" />
+										<feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+									</filter>
+								</defs>
+								<rect width="400" height="400" fill="none" />
+								<circle cx="200" cy="200" r="120" fill="none" stroke="url(#hvGrad)" stroke-width="1.2" opacity="0.35" />
+								<circle cx="200" cy="200" r="78" fill="none" stroke="url(#hvGrad)" stroke-width="1" opacity="0.5" stroke-dasharray="6 10" />
+								<path d="M80 260 Q200 120 320 260" fill="none" stroke="url(#hvGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0.85" filter="url(#glow)" />
+								<path d="M90 140 L200 200 L310 140" fill="none" stroke="url(#hvGrad)" stroke-width="1.5" opacity="0.45" />
+								<circle cx="120" cy="180" r="8" fill="#38bdf8" opacity="0.9" />
+								<circle cx="280" cy="180" r="8" fill="#34d399" opacity="0.9" />
+								<circle cx="200" cy="120" r="10" fill="url(#hvGrad)" />
+								<circle cx="200" cy="280" r="10" fill="url(#hvGrad)" opacity="0.85" />
+								<circle cx="90" cy="240" r="6" fill="#94a3b8" opacity="0.6" />
+								<circle cx="310" cy="240" r="6" fill="#94a3b8" opacity="0.6" />
+								<text x="200" y="352" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="13">Mobility · ML · Systems</text>
+							</svg>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -291,7 +100,7 @@
 				<h2 class="section-title">About</h2>
 				<div class="about-grid">
 					<div class="about-image">
-						<img src="images/servet-profile.jpg.JPG" alt="Dr. Servet Lapardhaja" loading="lazy" class="profile-image">
+						<img src="images/servet-profile.jpg.JPG" alt="Dr. Servet Lapardhaja" width="600" height="600" fetchpriority="high" class="profile-image">
 					</div>
 					<div class="about-content">
 						<p>
@@ -1037,8 +846,8 @@
 		<section id="contact" class="contact">
 			<div class="container">
 				<h2 class="section-title">Contact</h2>
-				<div class="contact-info" style="max-width: 800px; margin: 0 auto; text-align: center;">
-					<p style="font-size: 1.1em;">Feel free to reach out for collaborations, research opportunities, or questions.</p>
+				<p class="contact-lead">Reach out for collaborations, research, or questions.</p>
+				<div class="contact-info">
 					<div class="contact-details">
 						<p>Address: Empire State Building, 57<sup>th</sup> Floor, 350 5<sup>th</sup> Ave, New York, NY 10118, USA</p>
 						<p>Email: <a href="mailto:servet.lapardhaja@berkeley.edu">servet.lapardhaja@berkeley.edu</a></p>
@@ -1052,21 +861,12 @@
 	</main>
 
 	<footer class="footer">
-		<div class="container" style="display: flex; justify-content: center; align-items: center;">
-			<p style="text-align: center; margin: 0;">&copy; 2026 Servet Lapardhaja. All rights reserved.</p>
+		<div class="container footer-inner">
+			<p>&copy; 2026 Servet Lapardhaja. All rights reserved.</p>
 		</div>
 	</footer>
 
 	<script src="script.js"></script>
-	<script>
-		// Progress bar functionality
-		window.addEventListener('scroll', () => {
-			const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-			const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-			const scrolled = (winScroll / height) * 100;
-			document.querySelector('.progress-bar').style.width = scrolled + '%';
-		});
-	</script>
 </body>
 </html>
 
