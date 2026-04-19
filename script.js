@@ -81,30 +81,21 @@ if (contactForm) {
     })
 }
 
-// Add scroll-based header styling
+// Scroll progress + header elevation
 const header = document.querySelector('.header')
-let lastScroll = 0
+const progressBar = document.querySelector('.progress-bar')
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset
-    
-    if (currentScroll <= 0) {
-        header.classList.remove('scroll-up')
-        return
+    const scrollTop = window.scrollY || document.documentElement.scrollTop
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+    const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+    if (progressBar) {
+        progressBar.style.width = scrolled + '%'
     }
-    
-    if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
-        // Scroll Down
-        header.classList.remove('scroll-up')
-        header.classList.add('scroll-down')
-    } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
-        // Scroll Up
-        header.classList.remove('scroll-down')
-        header.classList.add('scroll-up')
+    if (header) {
+        header.classList.toggle('is-scrolled', scrollTop > 24)
     }
-    
-    lastScroll = currentScroll
-})
+}, { passive: true })
 
 // Add loading animation for images
 document.querySelectorAll('img').forEach(img => {
@@ -124,24 +115,6 @@ document.querySelectorAll('.skill-category li').forEach(item => {
         item.style.transform = 'translateX(0)'
     })
 })
-
-// Add typing animation to hero title
-const heroTitle = document.querySelector('.hero-title')
-if (heroTitle) {
-    const text = heroTitle.textContent
-    heroTitle.textContent = ''
-    let i = 0
-    
-    function typeWriter() {
-        if (i < text.length) {
-            heroTitle.textContent += text.charAt(i)
-            i++
-            setTimeout(typeWriter, 50)
-        }
-    }
-    
-    typeWriter()
-}
 
 // Publications Tab Switching
 document.addEventListener('DOMContentLoaded', function() {
