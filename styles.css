@@ -851,6 +851,8 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
+    /* Prevent row height = tallest card from stretching shorter siblings */
+    align-items: start;
 }
 
 .recognition-item {
