@@ -855,6 +855,7 @@ section {
 
 .recognition-item {
     display: flex;
+    align-items: flex-start;
     gap: 1rem;
     padding: 1.25rem;
     background: var(--surface);
@@ -866,6 +867,10 @@ section {
 
 .recognition-item:hover {
     border-color: rgba(52, 211, 153, 0.2);
+}
+
+.recognition-item.expanded {
+    border-color: rgba(52, 211, 153, 0.35);
 }
 
 .recognition-icon {
