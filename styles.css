@@ -897,12 +897,6 @@ section {
     opacity: 1;
 }
 
-@media (min-width: 768px) {
-    .project-card--wide {
-        grid-column: 1 / -1;
-    }
-}
-
 .project-card-top {
     display: flex;
     flex-wrap: wrap;
