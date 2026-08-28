@@ -50,6 +50,15 @@ button { font:inherit; }
 .button-gold { background:var(--gold); }
 .button-gold:hover { background:var(--gold-light); }
 .quiet-link { color:var(--paper); font:600 .92rem/1.25 var(--sans); text-decoration-color:var(--gold); text-decoration-thickness:2px; text-underline-offset:.45rem; }
+.arrow { display:inline-grid; place-items:center; width:.78em; height:.78em; margin-inline-start:.12em; overflow:hidden; vertical-align:-.08em; font-size:0; font-style:normal; color:inherit; }
+.arrow::after { content:''; width:100%; height:100%; background:currentColor; -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 4h13v13h-2.2V7.8L5.6 20 4 18.4 16.2 6.2H7z'/%3E%3C/svg%3E") center / contain no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 4h13v13h-2.2V7.8L5.6 20 4 18.4 16.2 6.2H7z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.arrow-right::after { -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 11h12.17l-5.58-5.59L12 4l8 8-8 8-1.41-1.41L16.17 13H4z'/%3E%3C/svg%3E") center / contain no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M4 11h12.17l-5.58-5.59L12 4l8 8-8 8-1.41-1.41L16.17 13H4z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.arrow-down::after { -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M11 4v12.17l-5.59-5.58L4 12l8 8 8-8-1.41-1.41L13 16.17V4z'/%3E%3C/svg%3E") center / contain no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M11 4v12.17l-5.59-5.58L4 12l8 8 8-8-1.41-1.41L13 16.17V4z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.role-rail i.arrow { width:1.05rem; height:1.05rem; margin:0; color:var(--gold); }
+.button-gold .arrow { color:var(--navy); }
+.quiet-link .arrow { color:var(--gold); }
+.publication-card > a .arrow { color:inherit; }
+.project-card footer a .arrow,.detail-link .arrow { color:var(--gold); }
 .hero-credentials { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; max-width:570px; margin:3.1rem 0 0; padding-top:1.45rem; border-top:1px solid var(--line); }
 .hero-credentials div { min-width:0; }
 .hero-credentials dt { margin-bottom:.35rem; color:var(--gold-light); font:500 .8rem/1 var(--mono); letter-spacing:.04em; text-transform:uppercase; }
