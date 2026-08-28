@@ -217,8 +217,8 @@ test('uses concise live and code actions in every project card', async ({ page }
   await project.evaluate(element => element.scrollIntoView({ block: 'center' }))
 
   await expect(page.locator('#projects .project-more')).toHaveCount(0)
-  await expect(project.getByRole('link', { name: 'Live ↗' })).toBeVisible()
-  await expect(project.getByRole('link', { name: 'Code ↗' })).toBeVisible()
+  await expect(project.getByRole('link', { name: 'Live' })).toBeVisible()
+  await expect(project.getByRole('link', { name: 'Code' })).toBeVisible()
   await expect(project).toContainText('Tesseract OCR')
 })
 

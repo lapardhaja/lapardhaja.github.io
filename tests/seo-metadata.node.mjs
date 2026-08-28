@@ -152,8 +152,8 @@ test('defaults Education to the Ph.D. and keeps project cards concise', () => {
   assert.match(html, /<article class="education-detail" id="education-georgia"[^>]* hidden>/)
   const projects = html.match(/<section id="projects"[\s\S]*?<\/section>/)?.[0] ?? ''
   assert.equal((projects.match(/class="project-more"/g) ?? []).length, 0)
-  assert.equal((projects.match(/>Live <span class="arrow">↗<\/span><\/a>/g) ?? []).length, 5)
-  assert.equal((projects.match(/>Code <span class="arrow">↗<\/span><\/a>/g) ?? []).length, 5)
+  assert.equal((projects.match(/>Live<\/a>/g) ?? []).length, 5)
+  assert.equal((projects.match(/>Code<\/a>/g) ?? []).length, 5)
   assert.doesNotMatch(projects, /Open product|View code/)
   for (const detail of ['Supabase Auth', 'Tesseract OCR', 'D3\.js', 'Maine Turnpike Lane Closures', 'PDF &amp; Excel export', 'Mortgage Calculator']) {
     assert.match(projects, new RegExp(detail))
