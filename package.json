@@ -1,0 +1,12 @@
+{
+  "name": "servet-lapardhaja-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:mobile": "playwright test --config=playwright.config.mjs",
+    "test:seo": "node --test tests/seo-metadata.node.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0"
+  }
+}

@@ -1,932 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Dr. Servet Lapardhaja — Engineering portfolio. AI Engineer, U.S. Department of the Treasury; Ph.D. in transportation engineering, UC Berkeley">
-	<meta name="theme-color" content="#0b1120">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="Servet Lapardhaja | AI & Transportation Engineering">
-	<meta property="og:description" content="Engineering portfolio — AI, machine learning, transportation systems, and research.">
-	<meta property="og:url" content="https://lapardhaja.com/">
-	<meta property="og:image" content="https://lapardhaja.com/images/og-cover.svg">
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Servet Lapardhaja | AI & Transportation Engineering">
-	<meta name="twitter:description" content="Engineering portfolio — AI, machine learning, transportation systems, and research.">
-	<meta name="twitter:image" content="https://lapardhaja.com/images/og-cover.svg">
-	<title>Servet Lapardhaja | AI & Transportation Engineering</title>
-	<link rel="icon" href="images/Logo.png" type="image/x-icon">
-	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI Engineer at the U.S. Department of the Treasury, UC Berkeley Ph.D., licensed Professional Engineer (P.E.) in New Jersey, and transportation researcher.">
+  <meta name="author" content="Servet Lapardhaja, Ph.D., P.E.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#071a2d">
+  <link rel="canonical" href="https://lapardhaja.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Servet Lapardhaja, Ph.D., P.E.">
+  <meta property="og:title" content="Servet Lapardhaja, Ph.D., P.E. | AI Engineer at the U.S. Treasury">
+  <meta property="og:description" content="AI Engineer at the U.S. Department of the Treasury, licensed Professional Engineer in New Jersey, and transportation researcher.">
+  <meta property="og:url" content="https://lapardhaja.com/">
+  <meta property="og:image" content="https://lapardhaja.com/images/og-cover.svg">
+  <meta property="og:image:alt" content="Servet Lapardhaja, Ph.D., P.E. — AI Engineer and transportation researcher">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Servet Lapardhaja, Ph.D., P.E. | AI Engineer at the U.S. Treasury">
+  <meta name="twitter:description" content="AI Engineer at the U.S. Department of the Treasury, licensed Professional Engineer in New Jersey, and transportation researcher.">
+  <meta name="twitter:image" content="https://lapardhaja.com/images/og-cover.svg">
+  <meta name="twitter:image:alt" content="Servet Lapardhaja, Ph.D., P.E. — AI Engineer and transportation researcher">
+  <link rel="me" href="https://www.linkedin.com/in/servetlapardhaja/">
+  <link rel="me" href="https://github.com/lapardhaja">
+  <link rel="icon" href="images/Logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Person","@id":"https://lapardhaja.com/#person","name":"Servet Lapardhaja","honorificSuffix":"Ph.D., P.E.","url":"https://lapardhaja.com/","image":{"@type":"ImageObject","url":"https://lapardhaja.com/images/servet-lapardhaja-portrait.jpg","width":1000,"height":1400},"description":"AI Engineer at the U.S. Department of the Treasury, licensed Professional Engineer in New Jersey, and transportation researcher.","jobTitle":"AI Engineer","worksFor":{"@type":"Organization","name":"U.S. Department of the Treasury"},"address":{"@type":"PostalAddress","addressLocality":"New York City","addressRegion":"NY","addressCountry":"US"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of California, Berkeley"},{"@type":"CollegeOrUniversity","name":"National Technical University of Athens"},{"@type":"CollegeOrUniversity","name":"Georgia Institute of Technology"}],"knowsAbout":["AI engineering","data science","machine learning","financial management systems","transportation engineering","traffic simulation","adaptive cruise control","transportation research"],"hasCredential":{"@type":"EducationalOccupationalCredential","name":"New Jersey Professional Engineer License","credentialCategory":"Professional Engineer","identifier":"24GE06379100","recognizedBy":{"@type":"Organization","name":"New Jersey State Board of Professional Engineers and Land Surveyors"}},"sameAs":["https://www.linkedin.com/in/servetlapardhaja/","https://github.com/lapardhaja"]}
+  </script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://lapardhaja.com/#profile","url":"https://lapardhaja.com/","name":"Servet Lapardhaja, Ph.D., P.E. | AI Engineer","description":"AI Engineer at the U.S. Department of the Treasury, licensed Professional Engineer in New Jersey, and transportation researcher.","dateModified":"2026-08-27","mainEntity":{"@id":"https://lapardhaja.com/#person"}},{"@type":"WebSite","@id":"https://lapardhaja.com/#website","url":"https://lapardhaja.com/","name":"Servet Lapardhaja, Ph.D., P.E.","publisher":{"@id":"https://lapardhaja.com/#person"}}]}
+  </script>
+  <title>Servet Lapardhaja, Ph.D., P.E. | AI Engineer at U.S. Treasury</title>
 </head>
-<body class="page-shell">
-	<!-- Add progress bar at the top -->
-	<div class="progress-bar"></div>
-	<header class="header">
-		<nav class="nav">
-			<a href="#hero" class="logo-text">
-				<span class="logo-gradient">Servet Lapardhaja</span>
-			</a>
-			<button class="nav-toggle" aria-label="Toggle navigation">
-				<span></span>
-				<span></span>
-				<span></span>
-			</button>
-			<ul class="nav-menu">
-				<li><a href="#about">About</a></li>
-				<li><a href="#experience">Experience</a></li>
-				<li><a href="#education">Education</a></li>
-				<li><a href="#skills">Skills</a></li>
-				<li><a href="#licenses">Licenses</a></li>
-				<li><a href="#publications">Publications</a></li>
-				<li><a href="#projects">Projects</a></li>
-				<li><a href="#recognitions">Recognitions</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
-		</nav>
-	</header>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#top" aria-label="Servet Lapardhaja, home"><span>SL</span><b>Servet Lapardhaja</b></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="sr-only">Open navigation</span><i></i><i></i></button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#licenses">Licenses</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#publications">Publications</a><a href="#recognitions">Recognitions</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <div class="scroll-progress" data-scroll-progress aria-hidden="true"><span></span></div>
 
-	<main>
-		<section id="hero" class="hero">
-			<div class="container">
-				<div class="hero-grid">
-					<div class="hero-copy">
-						<p class="hero-eyebrow">Engineering portfolio</p>
-						<h1 class="hero-title">
-							<span class="gradient-text">Servet Lapardhaja</span><span class="hero-title-suffix">, Ph.D.</span>
-						</h1>
-						<p class="hero-role">AI &amp; Transportation Engineer</p>
-						<p class="hero-description">
-							I am an AI Engineer with the U.S. Department of the Treasury. I hold a Ph.D. in transportation engineering from the University of California, Berkeley. I enjoy shipping tools, deploying practical AI, and building dependable data and ML systems—in production, side projects, and transportation research.
-						</p>
-						<div class="hero-actions">
-							<a href="#about" class="cta-button">About</a>
-							<a href="#projects" class="cta-button cta-button--ghost">Projects</a>
-							<a href="#publications" class="cta-button cta-button--ghost">Publications</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+  <main id="main">
+    <section id="top" class="hero" aria-labelledby="home-title">
+      <div class="hero-grid-lines" aria-hidden="true"></div>
+      <div class="site-width hero-inner">
+        <p class="section-index">Engineering portfolio</p>
+        <h1 id="home-title">Servet Lapardhaja, Ph.D., P.E.</h1>
+        <div class="hero-layout">
+          <div class="hero-copy" data-reveal>
+            <p class="hero-role">AI Engineer <span aria-hidden="true">·</span> Licensed Professional Civil Engineer</p>
+            <p class="hero-summary">I design dependable AI, data, and engineering systems—grounded in research, shaped by real users, and built to be useful.</p>
+            <div class="hero-actions"><a class="button button-gold" href="#experience">View experience <span aria-hidden="true">↓</span></a><a class="quiet-link" href="#about">A little more about me <span aria-hidden="true">→</span></a></div>
+            <dl class="hero-credentials"><div><dt>Based in</dt><dd>New York City</dd></div><div><dt>Current focus</dt><dd>AI &amp; data systems</dd></div></dl>
+          </div>
+          <figure class="hero-portrait" data-reveal>
+            <img src="images/servet-lapardhaja-portrait.jpg" alt="Portrait of Servet Lapardhaja" width="1000" height="1400" fetchpriority="high">
+            <figcaption><img src="images/treasury-seal.png" alt=""><div class="employer-copy"><span>Currently at</span><strong>U.S. Department of the Treasury</strong><small>AI Engineer</small></div></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-		<section id="about" class="about">
-			<div class="container">
-				<h2 class="section-title">About</h2>
-				<div class="about-grid">
-					<div class="about-image">
-						<img src="images/servet-profile.jpg.JPG" alt="Dr. Servet Lapardhaja" width="600" height="600" fetchpriority="high" class="profile-image">
-					</div>
-					<div class="about-content">
-						<p>
-							I am an AI Engineer with the U.S. Department of the Treasury. I hold a Ph.D. in transportation engineering from the University of California, Berkeley, with deep experience in traffic engineering, transportation operations, and the impact of automated vehicles on mobility. My expertise extends to data analytics, machine learning, and computational modeling, which I apply to build reliable analytical systems and to optimize transportation networks.
-						</p>
-						<p>
-							My doctoral research focused on Adaptive Cruise Control (ACC) vehicles and their effects on urban congestion, leveraging data-driven simulations and predictive modeling. I also earned an MS in Civil and Environmental Engineering from UC Berkeley and a Diploma of Engineering (BS & MEng) from the National Technical University of Athens, where I specialized in Transportation Engineering with a minor in Surveying Engineering.
-						</p>
-						<p>
-							My work integrates advanced data science techniques, machine learning algorithms, and traffic simulation models to enhance transportation planning, operations, and decision-making. I am particularly interested in how emerging mobility technologies and AI-driven solutions can transform the future of urban transportation.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
+    <section id="about" class="section section-paper" aria-labelledby="about-title">
+      <div class="site-width about-layout">
+        <div class="about-copy" data-reveal>
+          <div class="section-heading"><h2 id="about-title">About</h2></div>
+          <p class="lead">I’m an AI Engineer at the U.S. Department of the Treasury and a licensed Professional Engineer (P.E.) in New Jersey.</p>
+          <p>At Treasury, I build AI-enabled systems and data workflows that help modernize financial management. The goal is practical: reduce manual work and avoidable costs, make long-standing processes and legacy systems easier to use, and improve service for taxpayers. I use AI where it makes a task faster, clearer, or more dependable, and pair it with clear interfaces, testing, and documentation.</p>
+          <p>Before moving into AI engineering, I worked in transportation engineering and research. My work included traffic operations, simulation models, and large datasets—experience that taught me how to break down complicated systems and explain the result clearly.</p>
+          <p>I earned both a Ph.D. and an M.S. in Civil and Environmental Engineering from UC Berkeley. My doctoral research examined how adaptive cruise control affects traffic flow and urban congestion, combining field data, simulation, and predictive modeling. I also earned a Diploma of Engineering from the National Technical University of Athens, where I studied transportation and surveying engineering.</p>
+          <p>I am currently pursuing an M.S. in Analytics at Georgia Tech, focused on data science and machine learning. It gives me room to deepen the skills I use alongside my engineering background.</p>
+        </div>
+      </div>
+    </section>
 
-		<section id="experience" class="experience">
-			<div class="container">
-				<h2 class="section-title">Experience</h2>
-				<div class="timeline">
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/us-treasury-seal.png" alt="U.S. Department of the Treasury seal" class="company-logo">
-								<div>
-									<h3>U.S. Department of the Treasury</h3>
-									<p class="timeline-date">April 2026 - Present</p>
-									<p class="timeline-location">New York, NY, USA · Remote</p>
-								</div>
-							</div>
-							<h4>AI Engineer</h4>
-							<div class="details"></div>
-						</div>
-					</div>
+    <section id="experience" class="section section-navy" aria-labelledby="experience-title">
+      <div class="site-width">
+        <div class="section-heading section-title" data-reveal><h2 id="experience-title">Experience</h2></div>
+        <div class="experience-browser" data-experience data-reveal>
+          <div class="experience-stage">
+            <article class="role-detail" id="role-treasury" role="tabpanel" aria-labelledby="tab-treasury">
+              <div class="role-mark"><img src="images/treasury-seal.png" alt="U.S. Department of the Treasury seal"><span>Current role</span></div>
+              <p class="role-date">2026—Present · New York / remote</p>
+              <h3>U.S. Department of the Treasury</h3>
+              <p class="role-name">AI Engineer</p>
+              <p class="role-summary">I lead development and coordinate delivery of AI tools and data workflows for financial management, with clear interfaces, reliable data, and careful validation at the center.</p>
+              <ul><li>Lead development and coordinate delivery across product, data, and engineering workstreams.</li><li>Design AI-enabled workflows that make complex financial information easier to work with.</li><li>Improve data-rich interfaces so people can find, compare, and act on the right information.</li><li>Use automated build, review, and browser checks to validate delivery.</li></ul>
+              <details class="role-more"><summary>Read more about this role <i aria-hidden="true">+</i></summary><div class="role-more-content"><ul><li>Coordinate operational needs, product flows, interface requirements, and acceptance criteria across the development lifecycle.</li><li>Build responsive, accessible data experiences with React, Next.js, and TypeScript, connecting people to the information needed for timely decisions.</li><li>Work across APIs, PostgreSQL data models, and interface states to make large, detailed records easier to navigate and review.</li><li>Use Python, SQL, and AI-assisted workflows where they improve analysis or delivery without replacing careful review.</li><li>Document implementation decisions and maintain automated browser-test evidence so releases are reliable and easy to validate.</li></ul></div></details>
+              <div class="chip-list"><span>Python</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>SQL</span><span>PostgreSQL</span><span>Playwright</span><span>AI engineering</span></div>
+            </article>
+            <article class="role-detail" id="role-hntb" role="tabpanel" aria-labelledby="tab-hntb" hidden>
+              <div class="role-mark"><img src="images/hntb-logo.jpg" alt="HNTB logo"><span>Professional practice</span></div>
+              <p class="role-date">2024—2026 · New York</p>
+              <h3>HNTB</h3>
+              <p class="role-name">Engineer I</p>
+              <p class="role-summary">Led traffic modeling and engineering-automation work for major transportation programs.</p>
+              <ul><li>Calibrated and validated VISSIM traffic models with field data so simulations reflected real operating conditions.</li><li>Developed existing, no-build, and build scenarios to evaluate network performance and guide infrastructure decisions.</li><li>Created Python automation for level-of-service, origin–destination, radar, and tolling-data analysis.</li></ul>
+              <details class="role-more"><summary>Read more about this role <i aria-hidden="true">+</i></summary><div class="role-more-content"><ul><li>Used dynamic traffic assignment and automated OD-matrix estimation to compare transit and roadway alternatives.</li><li>Supported regional transitway and event-operations planning by testing capacity, congestion, and operational-reliability strategies.</li><li>Automated level-of-service and origin–destination analysis, reducing time spent on recurring engineering analysis by 95%+.</li><li>Provided traffic-analysis and modeling support for turnpike capital programs, including automated processing of high-resolution radar data into planning-ready AADT measures.</li><li>Built repeatable Python pipelines that transformed large radar and tolling datasets into clear, decision-ready outputs.</li><li>Contributed to bridge safety audits, signage-retrofit design, multimodal-hub operations, and work-zone staging analysis.</li><li>Applied forecasting, causal inference, and machine-learning methods to strengthen transportation performance assessment.</li></ul></div></details>
+              <div class="chip-list"><span>Python</span><span>VISSIM</span><span>Dynamic traffic assignment</span><span>OD modeling</span><span>Radar &amp; toll data</span><span>Forecasting</span><span>Automation</span></div>
+            </article>
+            <article class="role-detail" id="role-hntb-intern" role="tabpanel" aria-labelledby="tab-hntb-intern" hidden>
+              <div class="role-mark"><img src="images/hntb-logo.jpg" alt="HNTB logo"><span>Professional practice</span></div>
+              <p class="role-date">2023 · New York</p>
+              <h3>HNTB</h3>
+              <p class="role-name">Civil Engineer Intern</p>
+              <p class="role-summary">Supported safety, operations, and simulation work across the New York–New Jersey region.</p>
+              <ul><li>Developed wrong-way-driving prevention and signing concepts for major tunnel and bridge facilities.</li><li>Produced traffic-signal and signage plans for a grade-crossing design milestone.</li><li>Studied event-period operations and traffic simulation performance to support future demand planning.</li></ul>
+              <details class="role-more"><summary>Read more about this role <i aria-hidden="true">+</i></summary><div class="role-more-content"><ul><li>Prepared signing and striping service-request concepts for Port Authority tunnels and bridges in accordance with MUTCD and owner requirements.</li><li>Developed detailed traffic-control plans for an urban grade-crossing project and supported the 50-percent design submission.</li><li>Conducted traffic-impact analysis for future build conditions and updated a bridge-corridor simulation model using observed operations.</li><li>Evaluated level of service at three intersections near MetLife Stadium during an event, translating field observations into operational recommendations.</li></ul></div></details>
+              <div class="chip-list"><span>VISSIM</span><span>Road safety</span><span>Traffic operations</span><span>LOS analysis</span><span>MUTCD</span><span>Traffic control plans</span></div>
+            </article>
+            <article class="role-detail" id="role-fehr" role="tabpanel" aria-labelledby="tab-fehr" hidden>
+              <div class="role-mark"><img src="images/fehr-peers-logo.jpg" alt="Fehr &amp; Peers logo"><span>Professional practice</span></div>
+              <p class="role-date">2022 · Walnut Creek, California</p>
+              <h3>Fehr &amp; Peers</h3>
+              <p class="role-name">Transportation Engineer Intern</p>
+              <p class="role-summary">Contributed to impact reporting, transit-market analysis, road safety, parking, and freeway-interchange modeling.</p>
+              <ul><li>Prepared transportation-impact reports to support local housing-element planning.</li><li>Analyzed collision patterns in GIS to inform local road-safety plans.</li><li>Modeled freeway-interchange conditions for existing and future scenarios.</li></ul>
+              <details class="role-more"><summary>Read more about this role <i aria-hidden="true">+</i></summary><div class="role-more-content"><ul><li>Prepared transportation-impact reports for the housing elements of Antioch, Pleasanton, and Moraga.</li><li>Conducted a transit-market assessment for the State Route 239 project, connecting demand patterns to service-planning considerations.</li><li>Mapped and analyzed crash history to identify patterns that could guide local road-safety improvements.</li><li>Estimated parking demand for a commercial use and evaluated I-680 / SR-4 interchange operations under future conditions.</li></ul></div></details>
+              <div class="chip-list"><span>GIS</span><span>Transportation impact analysis</span><span>Safety analysis</span><span>Interchange modeling</span><span>Parking analysis</span></div>
+            </article>
+            <article class="role-detail" id="role-berkeley" role="tabpanel" aria-labelledby="tab-berkeley" hidden>
+              <div class="role-mark"><img src="images/berkeley-logo.jpg" alt="UC Berkeley logo"><span>Research &amp; teaching</span></div>
+              <p class="role-date">2019—2023 · Berkeley, California</p>
+              <h3>University of California, Berkeley</h3>
+              <p class="role-name">Graduate Student Researcher &amp; Instructor</p>
+              <p class="role-summary">Studied how autonomous and adaptive-cruise-control vehicles reshape congestion while teaching transportation engineering.</p>
+              <ul><li>Developed and validated Python and AIMSUN car-following models for mixed traffic.</li><li>Helped build Caltrans’ Operations Planning Toolbox and supported software quality assurance.</li><li>Analyzed large Bay Area transit datasets with SQL and Python.</li><li>Taught graduate and undergraduate courses such as Intelligent Transportation Systems, Highway Traffic Operations, Transportation Systems Engineering, and Transportation Facilities.</li></ul>
+              <details class="role-more"><summary>Read more about this role <i aria-hidden="true">+</i></summary><div class="role-more-content"><ul><li>Investigated the network effects of autonomous and adaptive-cruise-control vehicles through data-driven simulation and predictive modeling, including scenarios with up to an 80% increase in network-wide vehicle hours traveled.</li><li>Built and tested car-following models to examine congestion, capacity, and the interaction of automated and human-driven vehicles.</li><li>Analyzed millions of ridership records from three Bay Area transit agencies to identify pandemic-era service and demand trends.</li><li>Helped develop Caltrans’ Operations Planning Toolbox and supported software quality assurance for multimodal transportation modeling.</li></ul></div></details>
+              <div class="chip-list"><span>Python</span><span>AIMSUN</span><span>SQL</span><span>Traffic simulation</span><span>Predictive modeling</span><span>Software QA</span><span>Data analysis</span></div>
+            </article>
+            <article class="role-detail" id="role-cern" role="tabpanel" aria-labelledby="tab-cern" hidden>
+              <div class="role-mark"><img src="images/cern-logo.jpg" alt="CERN logo"><span>Research engineering</span></div>
+              <p class="role-date">2018 · Geneva, Switzerland</p>
+              <h3>CERN</h3>
+              <p class="role-name">Research Engineer Intern</p>
+              <p class="role-summary">Built a production-ready photogrammetry algorithm for high-precision geodetic measurement at the Large Hadron Collider.</p>
+              <ul><li>Developed high-precision target detection in MATLAB for geodetic measurement.</li><li>Automated recognition of coded targets across multiple images.</li><li>Integrated the method with surveying software and presented the work at Fermilab.</li></ul>
+              <details class="role-more"><summary>Read more about this role <i aria-hidden="true">+</i></summary><div class="role-more-content"><ul><li>Applied photogrammetry to strengthen alignment and measurement processes for accelerator infrastructure.</li><li>Created an automated recognition algorithm for coded circular targets captured across multiple photographs.</li><li>Integrated the algorithm into an existing surveying workflow, turning research code into a production-ready tool.</li><li>Achieved target-detection precision of ±0.04 pixels and presented the work to the accelerator-alignment community at Fermilab.</li></ul></div></details>
+              <div class="chip-list"><span>MATLAB</span><span>Photogrammetry</span><span>Computer vision</span><span>Target detection</span><span>Surveying</span></div>
+            </article>
+          </div>
+          <div class="role-rail" role="tablist" aria-label="Professional experience">
+            <button type="button" role="tab" aria-selected="true" aria-controls="role-treasury" id="tab-treasury"><img src="images/treasury-seal.png" alt=""><span><b>U.S. Treasury</b><small>AI Engineer · 2026—now</small></span><i aria-hidden="true">↗</i></button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="role-hntb" id="tab-hntb" tabindex="-1"><img src="images/hntb-logo.jpg" alt=""><span><b>HNTB</b><small>Engineer I · 2024—2026</small></span><i aria-hidden="true">↗</i></button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="role-hntb-intern" id="tab-hntb-intern" tabindex="-1"><img src="images/hntb-logo.jpg" alt=""><span><b>HNTB</b><small>Intern · 2023</small></span><i aria-hidden="true">↗</i></button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="role-fehr" id="tab-fehr" tabindex="-1"><img src="images/fehr-peers-logo.jpg" alt=""><span><b>Fehr &amp; Peers</b><small>Intern · 2022</small></span><i aria-hidden="true">↗</i></button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="role-berkeley" id="tab-berkeley" tabindex="-1"><img src="images/berkeley-logo.jpg" alt=""><span><b>UC Berkeley</b><small>Researcher · 2019—2023</small></span><i aria-hidden="true">↗</i></button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="role-cern" id="tab-cern" tabindex="-1"><img src="images/cern-logo.jpg" alt=""><span><b>CERN</b><small>Research engineer · 2018</small></span><i aria-hidden="true">↗</i></button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/hntb-logo.jfif" alt="HNTB Logo" class="company-logo">
-								<div>
-									<h3>HNTB</h3>
-									<p class="timeline-date">February 2024 - April 2026</p>
-									<p class="timeline-location">New York, NY, USA</p>
-								</div>
-							</div>
-							<h4>Engineer I</h4>
-							<div class="details">
-								<ul>
-									<li>Led calibration and validation of VISSIM traffic models using field data (TMCs, ATRs) so microscopic simulations accurately replicate real-world conditions</li>
-									<li>Developed existing, no-build, and build scenarios to evaluate network performance and support data-driven decisions on critical infrastructure projects</li>
-									<li>Designed mitigation strategies for the Secaucus–Meadowlands Transitway to address FIFA 2026 event-driven congestion and operational reliability; ran VISSIM simulations to optimize capacity for the World Cup</li>
-									<li>Coordinated with stakeholders at NJ Transit, NJDOT, and the NJ Turnpike to align analyses, assumptions, and deliverables with client expectations</li>
-									<li>Engineered Python-based tools for LOS estimation and OD flow modeling, achieving 95%+ time savings and stronger precision versus manual workflows</li>
-									<li>Built an automated OD matrix estimation framework and applied dynamic traffic assignment (DTA) in VISSIM to evaluate transit and roadway alternatives</li>
-									<li>Provided lead engineering support on the Maine Turnpike Authority General Engineering Consultant (GEC) contract, delivering system-wide traffic analysis and modeling for capital programs; automated radar processing to compute AADT from high-resolution sensors (replacing a multi-week manual process)</li>
-									<li>Architected Python pipelines to process large-scale radar and tolling datasets into planning-ready insights</li>
-									<li>Led regulatory audits and signage retrofit designs for the Marine Parkway and Cross Bay Bridges, ensuring alignment with FHWA safety standards</li>
-									<li>Developed VISSIM simulations for the Walter Rand Transportation Center to improve multi-modal integration among bus, rail, and pedestrian traffic</li>
-									<li>Modeled maintenance of traffic (MOT) and work-zone staging in VISSIM to reduce construction-related delays on major highway extension programs</li>
-									<li>Applied time-series forecasting, causal inference, and machine learning to strengthen traffic forecasting and infrastructure performance assessment</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+    <section id="education" class="section section-paper" aria-labelledby="education-title">
+      <div class="site-width">
+        <div class="section-heading section-title" data-reveal><h2 id="education-title">Education</h2></div>
+        <div class="education-browser" data-education data-reveal>
+          <div class="education-grid" role="tablist" aria-label="Academic degrees">
+            <button class="education-card" type="button" role="tab" aria-selected="false" aria-controls="education-georgia" id="education-tab-georgia" tabindex="-1"><img src="images/georgia-tech-logo.svg" alt="Georgia Institute of Technology logo"><p>2025—Present</p><h3>M.S. in Analytics</h3><strong>Georgia Institute of Technology</strong></button>
+            <button class="education-card" type="button" role="tab" aria-selected="true" aria-controls="education-phd" id="education-tab-phd"><img src="images/berkeley-logo.jpg" alt="UC Berkeley logo"><p>2020—2023</p><h3>Ph.D. in Civil &amp; Environmental Engineering</h3><strong>University of California, Berkeley</strong></button>
+            <button class="education-card" type="button" role="tab" aria-selected="false" aria-controls="education-ms" id="education-tab-ms" tabindex="-1"><img src="images/berkeley-logo.jpg" alt="UC Berkeley logo"><p>2019—2020</p><h3>M.S. in Civil &amp; Environmental Engineering</h3><strong>University of California, Berkeley</strong></button>
+            <button class="education-card" type="button" role="tab" aria-selected="false" aria-controls="education-ntua" id="education-tab-ntua" tabindex="-1"><img src="images/ntua-logo.jpg" alt="National Technical University of Athens logo"><p>2014—2019</p><h3>Diploma of Engineering</h3><strong>National Technical University of Athens</strong></button>
+          </div>
+          <article class="education-detail" id="education-georgia" role="tabpanel" aria-labelledby="education-tab-georgia" hidden><div><p class="section-index">Georgia Tech · 2025—Present</p><h3>M.S. in Analytics</h3><p class="education-lead">Graduate study in Computational Data Analytics, with a focus on data science and machine learning.</p></div><dl><div><dt>Institution</dt><dd>Georgia Institute of Technology</dd></div><div><dt>Specialization</dt><dd>Computational Data Analytics</dd></div><div><dt>Focus</dt><dd>Data Science &amp; Machine Learning</dd></div></dl></article>
+          <article class="education-detail" id="education-phd" role="tabpanel" aria-labelledby="education-tab-phd"><div><p class="section-index">UC Berkeley · 2020—2023</p><h3>Ph.D. in Civil &amp; Environmental Engineering</h3><p class="education-lead">Doctoral research on the effects of adaptive-cruise-control vehicles on urban congestion.</p></div><dl><div><dt>GPA</dt><dd>3.96 / 4.00</dd></div><div><dt>Specialization</dt><dd>Transportation Engineering</dd></div><div><dt>Minors</dt><dd>Data Science, Machine Learning &amp; City Planning</dd></div><div><dt>Dissertation</dt><dd><a class="detail-link" href="https://escholarship.org/uc/item/36d9r9cw" target="_blank" rel="noopener">Impacts of Adaptive Cruise Control on Urban Congestion <span aria-hidden="true">↗</span></a></dd></div></dl></article>
+          <article class="education-detail" id="education-ms" role="tabpanel" aria-labelledby="education-tab-ms" hidden><div><p class="section-index">UC Berkeley · 2019—2020</p><h3>M.S. in Civil &amp; Environmental Engineering</h3><p class="education-lead">Graduate work centered on traffic-flow theory and transportation operations.</p></div><dl><div><dt>GPA</dt><dd>3.96 / 4.00</dd></div><div><dt>Specialization</dt><dd>Transportation Engineering</dd></div><div><dt>Research focus</dt><dd>Traffic Flow Theory &amp; Transportation Operations</dd></div></dl></article>
+          <article class="education-detail" id="education-ntua" role="tabpanel" aria-labelledby="education-tab-ntua" hidden><div><p class="section-index">NTUA · 2014—2019</p><h3>Diploma of Engineering</h3><p class="education-lead">A combined B.S. and M.Eng. program in Rural and Surveying Engineering.</p></div><dl><div><dt>GPA</dt><dd>9.70 / 10.00</dd></div><div><dt>Class standing</dt><dd>1st of 135 · first in department history</dd></div><div><dt>Academic focus</dt><dd>Transportation Engineering · Minor in Surveying Engineering</dd></div></dl></article>
+        </div>
+      </div>
+    </section>
 
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/berkeley-logo.jfif" alt="Berkeley Logo" class="company-logo">
-								<div>
-									<h3>University of California, Berkeley</h3>
-									<p class="timeline-date">Aug 2019 - Dec 2023</p>
-									<p class="timeline-location">Berkeley, CA, USA</p>
-								</div>
-							</div>
-							<h4>Graduate Student Researcher</h4>
-							<div class="details">
-								<ul>
-									<li>Led cutting-edge research on the impacts of Autonomous Vehicles (AVs) and Adaptive Cruise Control (ACC) on urban transportation networks, demonstrating a potential surge of up to 80% in network-wide Vehicle Hours Traveled (VHT)</li>
-									<li>Developed and validated advanced car-following models using Python and AIMSUN to assess the effects of AVs on traffic congestion</li>
-									<li>Analyzed large-scale datasets to derive insights into the behavior of AVs and ACC systems in real-world scenarios</li>
-									<li>Developed the OPT (Operations Planning Toolbox) for Caltrans, a next-generation multi-modal transportation modeling software to replace FREQ12, and performed rigorous software quality assurance (SQA)</li>
-									<li>Analyzed millions of ridership records from three San Francisco Bay Area transit agencies (AC Transit, VTA, and Tri Delta) using SQL and Python, providing key insights into transit ridership trends during the COVID pandemic</li>
-									<li>Provided data-driven insights to stakeholders to improve transit services and resource allocation during the pandemic</li>
-									<li>Published findings on transit impacts in the book Pandemic in the Metropolis: Transportation Impacts and Recovery</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+    <section id="licenses" class="section section-navy" aria-labelledby="licenses-title">
+      <div class="site-width"><div class="section-heading section-title" data-reveal><h2 id="licenses-title">Licenses &amp; certifications</h2></div>
+        <div class="license-grid" data-reveal><article class="license-primary"><div class="license-monogram">PE</div><p class="section-index">New Jersey · Professional Engineer</p><h3>Licensed Professional Civil Engineer</h3><p>Licensed in the State of New Jersey.</p><dl><div><dt>License number</dt><dd>24GE06379100</dd></div><div><dt>Profession</dt><dd>Professional Engineer</dd></div></dl></article><div class="license-list"><article><a class="license-card-link" href="https://www.credly.com/badges/a15977da-79b2-4a82-9e19-69c09dbab9f6/public_url" target="_blank" rel="noopener"><p>AWS Certified Cloud Practitioner</p><span>Amazon · May 2025</span></a></article><article><p>Graduate Certificate in Applied Data Science</p><span>University of California, Berkeley · May 2023</span></article><article><a class="license-card-link" href="https://www.coursera.org/account/accomplishments/specialization/certificate/45Y8SQ6S2AE6" target="_blank" rel="noopener"><p>IBM Data Science Professional Certificate</p><span>IBM · December 2022</span></a></article><article><a class="license-card-link" href="https://account.ncees.org/rn/2076739-1553832-6fdd2c0" target="_blank" rel="noopener"><p>Engineer in Training</p><span>California Board for Professional Engineers, Land Surveyors, and Geologists · November 2022</span></a></article><article><p>Intelligent Transportation Systems Certificate</p><span>University of California, Berkeley · June 2021</span></article></div></div>
+      </div>
+    </section>
 
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/berkeley-logo.jfif" alt="Berkeley Logo" class="company-logo">
-								<div>
-									<h3>University of California, Berkeley</h3>
-									<p class="timeline-date">Jan 2021 - Dec 2023</p>
-									<p class="timeline-location">Berkeley, CA, USA</p>
-								</div>
-							</div>
-							<h4>Graduate Student Instructor</h4>
-							<div class="details">
-								<ul>
-									<li>Intelligent Transportation Systems - CE253 (Spring 2021)</li>
-									<li>Highway Traffic Operations - CE255 (Fall 2021)</li>
-									<li>Transportation Systems Engineering - CE155 (Fall 2022)</li>
-									<li>Operation of Transportation Facilities - CE251 (Fall 2023)</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+    <section id="projects" class="section section-blue" aria-labelledby="projects-title">
+      <div class="site-width"><div class="section-heading section-title" data-reveal><h2 id="projects-title">Projects</h2></div>
+        <div class="project-grid" data-reveal>
+          <article class="project-card"><p>Shared finance · Full stack</p><h3>Evenly</h3><span>A responsive receipt-splitting app with item-level allocation, tax and tip distribution, and shareable group balances.</span><div class="chip-list"><span>React</span><span>Vite</span><span>MUI</span><span>Supabase Auth</span><span>PostgreSQL</span><span>PWA</span><span>Gemini Vision</span></div><footer><a href="https://evenly.lapardhaja.com/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/lapardhaja/Evenly" target="_blank" rel="noopener">Code ↗</a></footer></article>
+          <article class="project-card"><p>Computer vision · Compliance</p><h3>BottleProof</h3><span>A label-compliance prototype that reads alcohol-label images, extracts key fields, and returns a field-by-field review.</span><div class="chip-list"><span>Python</span><span>Streamlit</span><span>Tesseract OCR</span><span>OpenCV</span><span>Pillow</span><span>RapidFuzz</span><span>pandas</span></div><footer><a href="https://bottleproof.streamlit.app/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/lapardhaja/Alcohol-Label" target="_blank" rel="noopener">Code ↗</a></footer></article>
+          <article class="project-card"><p>Data visualization · Networks</p><h3>Visualizing Art</h3><span>An interactive D3 similarity network for exploring relationships among thousands of museum artworks.</span><div class="chip-list"><span>D3.js</span><span>Python</span><span>Embeddings</span><span>Similarity data</span><span>Metadata</span><span>Image pipeline</span></div><footer><a href="https://art.hiokohime.workers.dev/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/lapardhaja/Visualizing-Art" target="_blank" rel="noopener">Code ↗</a></footer></article>
+          <article class="project-card"><p>Transportation operations · Planning</p><h3>Maine Turnpike Lane Closures</h3><span>A dashboard for analyzing traffic volumes and scheduling lane closures on the Maine Turnpike.</span><div class="chip-list"><span>JavaScript</span><span>CSV &amp; Excel</span><span>Volume heatmaps</span><span>Closure scheduling</span><span>Projections</span><span>PDF &amp; Excel export</span></div><footer><a href="https://lapardhaja.com/MTA-Lane-Closure/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/lapardhaja/MTA-Lane-Closure" target="_blank" rel="noopener">Code ↗</a></footer></article>
+          <article class="project-card"><p>Financial utility</p><h3>Mortgage Calculator</h3><span>A browser-based tool for comparing mortgage payments, amortization, and financing scenarios.</span><div class="chip-list"><span>React</span><span>Vite</span><span>JavaScript</span><span>Amortization</span><span>jsPDF</span><span>PDF tables</span></div><footer><a href="https://lapardhaja.com/Mortage-Calculator/" target="_blank" rel="noopener">Live ↗</a><a href="https://github.com/lapardhaja/Mortage-Calculator" target="_blank" rel="noopener">Code ↗</a></footer></article>
+        </div>
+      </div>
+    </section>
 
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/hntb-logo.jfif" alt="HNTB Logo" class="company-logo">
-								<div>
-									<h3>HNTB</h3>
-									<p class="timeline-date">May 2023 - August 2023</p>
-									<p class="timeline-location">New York, NY, USA</p>
-								</div>
-							</div>
-							<h4>Civil Engineer Intern</h4>
-							<div class="details">
-								<ul>
-									<li>Developed Wrong-Way Driving Prevention concepts and Signing/Striping Service Requests (SSRs) for tunnels (Holland and Lincoln Tunnels) and bridges (George Washington and Bayonne Bridges) under the jurisdiction of the NY-NJ Port Authority, adhering to MUTCD and Port Authority standards</li>
-									<li>Designed detailed signal and signage plans for the 50% submission milestone of the Lincoln Avenue Grade Crossing project in Albany, NY</li>
-									<li>Conducted traffic impact analyses for future build scenarios and updated and validated the traffic simulation model for the Delaware Memorial Bridge</li>
-									<li>Evaluated the Level of Service (LOS) at three intersections near MetLife Stadium in Meadowlands, NJ, through on-site observations during an event, providing recommendations to enhance operations for the FIFA World Cup 2026</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+    <section id="skills" class="section section-paper" aria-labelledby="skills-title">
+      <div class="site-width"><div class="section-heading section-title" data-reveal><h2 id="skills-title">Skills</h2></div>
+        <div class="skills-grid" data-reveal aria-label="Grouped technical skills">
+          <article class="skill-group" id="skill-software" data-mark="&lt;/&gt;"><h3>Software</h3><ul class="skill-tags"><li>Python</li><li>TypeScript</li><li>React</li><li>Next.js</li><li>SQL</li><li>PostgreSQL</li><li>API design</li><li>AI workflows</li></ul></article>
+          <article class="skill-group" id="skill-analytics" data-mark="∑"><h3>Analytics</h3><ul class="skill-tags"><li>Data analysis</li><li>Data science</li><li>Machine learning</li><li>Statistical modeling</li><li>Forecasting</li><li>Causal inference</li><li>Simulation</li><li>Technical writing</li></ul></article>
+          <article class="skill-group" id="skill-transportation" data-mark="↔"><h3>Transportation</h3><ul class="skill-tags"><li>VISSIM</li><li>Aimsun</li><li>Synchro</li><li>FREQ12</li><li>Traffic operations</li><li>Dynamic traffic assignment</li><li>Transit analysis</li><li>Infrastructure planning</li></ul></article>
+          <article class="skill-group" id="skill-spatial" data-mark="⌖"><h3>Spatial</h3><ul class="skill-tags"><li>ArcGIS</li><li>QGIS</li><li>AutoCAD</li><li>MicroStation</li><li>MATLAB</li><li>Surveying</li><li>Photogrammetry</li><li>Computer vision</li></ul></article>
+          <article class="skill-group" id="skill-delivery" data-mark="✓"><h3>Delivery</h3><ul class="skill-tags"><li>Playwright</li><li>Browser testing</li><li>Accessible UI</li><li>Code review</li><li>Documentation</li><li>Requirements</li><li>Quality assurance</li><li>Iterative delivery</li></ul></article>
+        </div>
+      </div>
+    </section>
 
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/fehr-peers.jpg" alt="Fehr & Peers Logo" class="company-logo">
-								<div>
-									<h3>Fehr & Peers</h3>
-									<p class="timeline-date">May 2022 - August 2022</p>
-									<p class="timeline-location">Walnut Creek, CA, USA</p>
-								</div>
-							</div>
-							<h4>Transportation Engineer Intern</h4>
-							<div class="details">
-								<ul>
-									<li>Created the Transportation Impact Reports for the Housing Elements of the City of Antioch, City of Pleasanton, and Town of Moraga</li>
-									<li>Performed the Transit Market Assessment for the State Route 239 (SR 239) Project</li>
-									<li>Analyzed collision data through GIS to identify patterns of accidents for the preparation of the Local Road Safety Plan (LRSP) of the City of Walnut Creek and Concord</li>
-									<li>Estimated the existing parking demand for the Culture Cannabis Club of Concord</li>
-									<li>Performed the modeling of the interchange I-680 and SR-4 for existing and future conditions</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+    <section id="publications" class="section section-navy" aria-labelledby="publications-title">
+      <div class="site-width"><div class="section-heading section-title" data-reveal><h2 id="publications-title">Publications</h2></div>
+        <div class="publication-browser" data-publications data-reveal>
+          <div class="publication-tabs" role="tablist" aria-label="Publication categories"><button type="button" role="tab" aria-selected="true" aria-controls="journals" id="journals-tab">Journal articles <small aria-hidden="true">06</small></button><button type="button" role="tab" aria-selected="false" aria-controls="theses" id="theses-tab" tabindex="-1">Theses <small aria-hidden="true">02</small></button><button type="button" role="tab" aria-selected="false" aria-controls="conferences" id="conferences-tab" tabindex="-1">Conference papers <small aria-hidden="true">08</small></button><button type="button" role="tab" aria-selected="false" aria-controls="chapters" id="chapters-tab" tabindex="-1">Book chapter <small aria-hidden="true">01</small></button><button type="button" role="tab" aria-selected="false" aria-controls="reports" id="reports-tab" tabindex="-1">Research report <small aria-hidden="true">01</small></button><button type="button" role="tab" aria-selected="false" aria-controls="datasets" id="datasets-tab" tabindex="-1">Datasets <small aria-hidden="true">02</small></button></div>
+          <div id="journals" role="tabpanel" aria-labelledby="journals-tab" class="publication-list">
+            <article class="publication-card"><header><b>2024</b><h3>ACC, queue storage, and worrisome news for cities</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong>, Godier, J. D., Cassidy, M. J., &amp; Kan, X. D. (2024).</p><p class="publication-venue"><em>Transportation Research Part C: Emerging Technologies</em>, 167, 104809.</p><a href="https://doi.org/10.1016/j.trc.2024.104809" target="_blank" rel="noopener">View publication ↗</a></article>
+            <article class="publication-card"><header><b>2024</b><h3>Commercial Adaptive Cruise Control (ACC) and Capacity Drop at Freeway Bottlenecks</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong>, Gong, Y., Murshed, M. T., &amp; Kan, X. D. (2024).</p><p class="publication-venue"><em>International Journal of Transportation Science and Technology</em>.</p><a href="https://doi.org/10.1016/j.ijtst.2024.07.011" target="_blank" rel="noopener">View publication ↗</a></article>
+            <article class="publication-card"><header><b>2024</b><h3>MicroSimACC: An open database for field experiments on the potential capacity impact of commercial Adaptive Cruise Control (ACC)</h3></header><p class="publication-citation">Yang, M., Chon-Kan Munoz, P., <strong>Lapardhaja, S.</strong>, Gong, Y., Imran, M. A., Murshed, M. T., Yagantekin, K., Khan, M. M. H., Kan, X. D., &amp; Lee, C. (2024).</p><p class="publication-venue"><em>Transportmetrica A: Transport Science</em>, 1–30.</p><a href="https://doi.org/10.1080/23249935.2024.2349921" target="_blank" rel="noopener">View publication ↗</a></article>
+            <article class="publication-card"><header><b>2023</b><h3>Unlocking potential capacity benefits of electric vehicles (EVs) with adaptive cruise control (ACC)</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong>, Yagantekin, K. U., Yang, M., Majumder, T. A., Kan, X. D., &amp; Badhrudeen, M. (2023).</p><p class="publication-venue"><em>Transportmetrica B: Transport Dynamics</em>, 11(1), 1894–1911.</p><a href="https://doi.org/10.1080/21680566.2023.2271668" target="_blank" rel="noopener">View publication ↗</a></article>
+            <article class="publication-card"><header><b>2021</b><h3>Testing alternative treatments for underused carpool lanes on narrow freeways</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong>, Jalota, D., Doig, J., Almubarak, A., &amp; Cassidy, M. J. (2021).</p><p class="publication-venue"><em>Transportation Research Part A: Policy and Practice</em>, 149, 139–149.</p><a href="https://doi.org/10.1016/j.tra.2021.05.002" target="_blank" rel="noopener">View publication ↗</a></article>
+            <article class="publication-card"><header><b>2019</b><h3>Position determination of encoded and uncoded targets on the Large Hadron Collider at CERN</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong>, &amp; Lambrou, E. (2019).</p><p class="publication-venue"><em>Applied Geomatics</em>, 11(4), 429–437.</p><a href="https://doi.org/10.1007/s12518-019-00274-7" target="_blank" rel="noopener">View publication ↗</a></article>
+          </div>
+          <div id="theses" role="tabpanel" aria-labelledby="theses-tab" class="publication-list" hidden>
+            <article class="publication-card"><header><b>2023</b><h3>Impacts of Adaptive Cruise Control on Urban Congestion: A Queuing Perspective</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong> (2023).</p><p class="publication-venue"><em>Ph.D. dissertation</em>, University of California, Berkeley.</p><a href="https://escholarship.org/uc/item/36d9r9cw" target="_blank" rel="noopener">View dissertation ↗</a></article>
+            <article class="publication-card"><header><b>2019</b><h3>Position determination of encoded and uncoded targets on the Large Hadron Collider at CERN</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong> (2019).</p><p class="publication-venue"><em>Diploma thesis</em>, National Technical University of Athens.</p><a href="https://dspace.lib.ntua.gr/xmlui/bitstream/handle/123456789/49080/Report_Servet_Lapardhaja_final.pdf?sequence=1" target="_blank" rel="noopener">View thesis ↗</a></article>
+          </div>
+          <div id="conferences" role="tabpanel" aria-labelledby="conferences-tab" class="publication-list" hidden>
+            <article class="publication-card"><header><b>2024</b><h3>Unlocking the Potential Congestion Relief from Electric Vehicles (EVs)</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong>, Yagantekin, K. U., Yang, M., &amp; Kan, X. D. (2024).</p><p class="publication-venue"><em>4th IEEE Forum for Innovative Sustainable Transportation Systems</em>, Riverside, California. Paper 22.</p><a href="https://doi.org/10.1109/FISTS60717.2024.10485597" target="_blank" rel="noopener">View publication ↗</a></article>
+            <article class="publication-card"><header><b>2023</b><h3>MicrosimACC: An Open Database for Field Experiments on the Potential Capacity Impact of Commercial ACC</h3></header><p class="publication-citation">Mingyuan, Y., <strong>Lapardhaja, S.</strong>, &amp; Kan, X. D. (2023).</p><p class="publication-venue"><em>26th IEEE International Conference on Intelligent Transportation Systems</em>, Bilbao, Spain. Paper 869.</p><a href="https://doi.org/10.1109/ITSC57777.2023.10421910" target="_blank" rel="noopener">View publication ↗</a></article>
+            <article class="publication-card"><header><b>2023</b><h3>Dynamic Curbside Management: Optimizing Supply and Demand at the Curb with New Data and Technologies</h3></header><p class="publication-citation">Mitman, M., Montgomery, A. R., Gibler, T., Howell, A., Primus, J., Flores, M., &amp; <strong>Lapardhaja, S.</strong> (2023).</p><p class="publication-venue"><em>Transportation Research Board 102nd Annual Meeting</em>, Washington, D.C. Paper 23-00964.</p></article>
+            <article class="publication-card"><header><b>2022</b><h3>Modeling CAV Car Following on Freeways and Arterials</h3></header><p class="publication-citation">Mingyuan, Y., <strong>Lapardhaja, S.</strong>, Kan-Munoz, P. C., Murshed, M. T., Kan, X. D., Hao, L., &amp; Xiao-Yun, L. (2022).</p><p class="publication-venue"><em>Transportation Research Board 101st Annual Meeting</em>, Washington, D.C. Paper 22-02452.</p></article>
+            <article class="publication-card"><header><b>2022</b><h3>Field Experiment of Mixed Traffic: Interaction between ACC and Human Drivers</h3></header><p class="publication-citation">Yaobang, G., Kan-Munoz, P. C., <strong>Lapardhaja, S.</strong>, Murshed, M. T., &amp; Kan, X. D. (2022).</p><p class="publication-venue"><em>Transportation Research Board 101st Annual Meeting</em>, Washington, D.C. Paper 22-03779.</p></article>
+            <article class="publication-card"><header><b>2021</b><h3>Impact of Commercially Available Automated Vehicles on Freeway Bottleneck Capacity</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong>, Gong, Y., Murshed, M. T., &amp; Kan, X. D. (2021).</p><p class="publication-venue"><em>Transportation Research Board 100th Annual Meeting</em>, Washington, D.C. Paper 21-02087.</p></article>
+            <article class="publication-card"><header><b>2021</b><h3>Field Experiments of Commercially Available Automated Vehicles on Freeways</h3></header><p class="publication-citation">Kan-Munoz, P. C., <strong>Lapardhaja, S.</strong>, &amp; Kan, X. D. (2021).</p><p class="publication-venue"><em>Transportation Research Board 100th Annual Meeting</em>, Washington, D.C. Paper 21-03778.</p></article>
+            <article class="publication-card"><header><b>2018</b><h3>Recent developments for a photogrammetric system to measure offsets to stretched wires at CERN</h3></header><p class="publication-citation">Mergelkuhl, D., Vendeuvre, C., &amp; <strong>Lapardhaja, S.</strong> (2018).</p><p class="publication-venue"><em>Proceedings of the 15th International Workshop on Accelerator Alignment</em>, Fermilab, Batavia, Illinois.</p><a href="https://indico.fnal.gov/event/16262/contributions/36457/attachments/22541/27959/IWAA2018_WirePhotogrammetry_Final.pdf" target="_blank" rel="noopener">View publication ↗</a></article>
+          </div>
+          <div id="chapters" role="tabpanel" aria-labelledby="chapters-tab" class="publication-list" hidden><article class="publication-card"><header><b>2022</b><h3>Monitoring of Bus Transit in Bay Area During COVID-19</h3></header><p class="publication-citation">Kurzhanskiy, A., &amp; <strong>Lapardhaja, S.</strong> (2022).</p><p class="publication-venue">In <em>Pandemic in the Metropolis: Transportation Impacts and Recovery</em> (pp. 283–297).</p><a href="https://link.springer.com/chapter/10.1007/978-3-031-00148-2_18" target="_blank" rel="noopener">View chapter ↗</a></article></div>
+          <div id="reports" role="tabpanel" aria-labelledby="reports-tab" class="publication-list" hidden><article class="publication-card"><header><b>2022</b><h3>Bus Operations of Three San Francisco Bay Area Transit Agencies during the First Year of the COVID-19 Pandemic</h3></header><p class="publication-citation">Kurzhanskiy, A., &amp; <strong>Lapardhaja, S.</strong> (2022).</p><p class="publication-venue"><em>Research report</em>.</p><a href="https://escholarship.org/uc/item/5cf8s117" target="_blank" rel="noopener">View report ↗</a></article></div>
+          <div id="datasets" role="tabpanel" aria-labelledby="datasets-tab" class="publication-list" hidden><article class="publication-card"><header><b>Data</b><h3>MicroSimACC-EV</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong> and collaborators.</p><p class="publication-venue">Dataset for electric vehicles with adaptive cruise control.</p><a href="https://github.com/microSIM-ACC/EV" target="_blank" rel="noopener">View dataset ↗</a></article><article class="publication-card"><header><b>Data</b><h3>MicroSimACC-ICE</h3></header><p class="publication-citation"><strong>Lapardhaja, S.</strong> and collaborators.</p><p class="publication-venue">Dataset for internal-combustion-engine vehicles with adaptive cruise control.</p><a href="https://github.com/microSIM-ACC/ICE" target="_blank" rel="noopener">View dataset ↗</a></article></div>
+        </div>
+      </div>
+    </section>
 
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/cern-logo.jpg" alt="CERN Logo" class="company-logo">
-								<div>
-									<h3>European Organization for Nuclear Research (CERN)</h3>
-									<p class="timeline-date">Apr 2018 - Sep 2018</p>
-									<p class="timeline-location">Geneva, Switzerland</p>
-								</div>
-							</div>
-							<h4>Research Engineer Intern</h4>
-							<div class="details">
-								<ul>
-									<li>Developed high-precision target detection algorithms using MATLAB, significantly enhancing the efficiency and accuracy of geodetic measurements at CERN, achieving a measurement precision of ±0.04 pixels</li>
-									<li>Applied advanced photogrammetry techniques to improve measurement and alignment processes within the Large Hadron Collider (LHC)</li>
-									<li>Created a unique algorithm for automatic target recognition of AICON-type coded circular targets across multiple photos</li>
-									<li>Integrated the algorithm with existing surveying software at CERN, transforming it into a production-ready tool and boosting the efficiency of geodetic work at the LHC</li>
-									<li>Published and presented the research findings at the International Workshop on Accelerator Alignment at Fermi National Accelerator Laboratory</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+    <section id="recognitions" class="section section-paper" aria-labelledby="recognitions-title">
+      <div class="site-width"><div class="section-heading section-title" data-reveal><h2 id="recognitions-title">Recognitions</h2></div>
+        <div class="recognition-grid" data-reveal><article data-mark="✦"><span class="award-periods"><time>2014—2015</time><time>2015—2016</time><time>2016—2017</time><time>2018—2019</time></span><h3>Thomaidio Award</h3><p>Four-time recipient for the highest GPA in NTUA’s School of Rural and Surveying Engineering.</p></article><article data-mark="∑"><span class="award-periods"><time>2014—2015</time><time>2015—2016</time></span><h3>Papakyriakopoulos Award</h3><p>Recognized for the highest average grade in Mathematics at NTUA.</p></article><article data-mark="◆"><span>2014—2015</span><h3>Kritikou Scholarship</h3><p>Awarded for academic performance in Mathematics at NTUA.</p></article><article data-mark="1st"><span>2019</span><h3>Chrisovergi Award</h3><p>Granted for graduating first in the 2019 NTUA class.</p></article><article data-mark="★"><span>2019</span><h3>Academic Excellence</h3><p>Greek State Scholarships Foundation recognition for graduating first in class.</p></article><article data-mark="⌖"><span>2018—2019</span><h3>Lambadarios Award</h3><p>Academy of Athens award for the highest GPA in geodetic courses among Polytechnic graduates in Greece.</p></article><article data-mark="UC"><span>2019—2020</span><h3>UC Berkeley Fellowship</h3><p>Full fellowship at the University of California, Berkeley.</p></article><article data-mark="IT"><span>2022—2023</span><h3>ITS California &amp; CTF</h3><p>ITS California and California Transportation Foundation Scholarship.</p></article></div>
+      </div>
+    </section>
 
-		<section id="education" class="education">
-			<div class="container">
-				<h2 class="section-title">Education</h2>
-				<div class="timeline">
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/georgia-tech-logo.png" alt="Georgia Tech Logo" class="company-logo">
-								<div>
-									<h3>M.S. in Analytics</h3>
-									<p class="timeline-date">Jan 2025 - Present</p>
-									<p class="timeline-location">Georgia Institute of Technology</p>
-								</div>
-							</div>
-							<div class="details">
-								<ul>
-									<li>Specialization: Computational Data Analytics (Data Science & Machine Learning)</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/berkeley-logo.jfif" alt="UC Berkeley Logo" class="company-logo">
-								<div>
-									<h3>Ph.D. in Civil & Environmental Engineering</h3>
-									<p class="timeline-date">May 2020 - Dec 2023</p>
-									<p class="timeline-location">University of California, Berkeley</p>
-								</div>
-							</div>
-							<div class="details">
-								<ul>
-									<li>Specialization: Transportation Engineering </li>
-									<li>Minors: Data Science, Machine Learning, City Planning </li>
-									<li>Dissertation: Impacts of Adaptive Cruise Control on Urban Congestion </li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/berkeley-logo.jfif" alt="UC Berkeley Logo" class="company-logo">
-								<div>
-									<h3>M.S. in Civil & Environmental Engineering</h3>
-									<p class="timeline-date">Aug 2019 - May 2020</p>
-									<p class="timeline-location">University of California, Berkeley</p>
-								</div>
-							</div>
-							<div class="details">
-								<ul>
-									<li>Transportation Engineering</li>
-									<li>GPA: 3.96/4.00</li>
-									<li>Research focus on traffic flow theory and transportation operations</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="timeline-item">
-						<div class="timeline-content">
-							<div class="timeline-header">
-								<img src="images/ntua-logo.jpg" alt="NTUA Logo" class="company-logo">
-								<div>
-									<h3>Diploma of Engineering</h3>
-									<p class="timeline-date">Sep 2014 - Jul 2019</p>
-									<p class="timeline-location">National Technical University of Athens</p>
-								</div>
-							</div>
-							<div class="details">
-								<ul>
-									<li>B.S. and M.Eng. in Rural and Surveying Engineering</li>
-									<li>GPA: 9.70/10.00 (ranked 1st among class of 135 and in the history of the department)</li>
-									<li>Specialization in Transportation Engineering</li>
-									<li>Minor in Surveying Engineering</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="skills" class="skills">
-			<div class="container">
-				<h2 class="section-title">Skills</h2>
-				<div class="skills-grid">
-					<div class="skill-category">
-						<h3>Programming</h3>
-						<ul>
-							<li>Python</li>
-							<li>SQL</li>
-							<li>MATLAB</li>
-						</ul>
-					</div>
-					<div class="skill-category">
-						<h3>Software Tools</h3>
-						<ul>
-							<li>Aimsun</li>
-							<li>Vissim</li>
-							<li>Synchro</li>
-							<li>FREQ12</li>
-							<li>MATLAB</li>
-							<li>AutoCAD</li>
-							<li>MicroStation</li>
-							<li>ArcGIS</li>
-							<li>QGIS</li>
-							<li>Microsoft Office</li>
-						</ul>
-					</div>
-					<div class="skill-category">
-						<h3>Field Knowledge</h3>
-						<ul>
-							<li>Transportation Engineering</li>
-							<li>Surveying Engineering</li>
-							<li>Behavioral Modeling</li>
-							<li>Data Science</li>
-							<li>Machine Learning</li>
-							<li>City Planning</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="licenses" class="licenses">
-			<div class="container">
-				<h2 class="section-title">Licenses & Certifications</h2>
-				<div class="licenses-grid">
-					<div class="license-item">
-						<div class="license-icon">
-							<i class="fas fa-laptop-code"></i>
-						</div>
-						<div class="license-content">
-							<h3><a href="https://www.credly.com/badges/a15977da-79b2-4a82-9e19-69c09dbab9f6/public_url" target="_blank">Amazon Web Services (AWS) Certified Cloud Practitioner</a></h3>
-							<div class="license-details">
-								<p>Amazon</p>
-								<p class="license-date">May 2025</p>
-							</div>
-						</div>
-					</div>
-					
-					<div class="license-item">
-						<div class="license-icon">
-							<i class="fas fa-certificate"></i>
-						</div>
-						<div class="license-content">
-							<h3>Graduate Certificate in Applied Data Science</h3>
-							<div class="license-details">
-								<p>University of California, Berkeley</p>
-								<p class="license-date">May 2023</p>
-							</div>
-						</div>
-					</div>
-					
-					<div class="license-item">
-						<div class="license-icon">
-							<i class="fas fa-laptop-code"></i>
-						</div>
-						<div class="license-content">
-							<h3><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/45Y8SQ6S2AE6" target="_blank">IBM Data Science Professional Certificate</a></h3>
-							<div class="license-details">
-								<p>IBM</p>
-								<p class="license-date">December 2022</p>
-							</div>
-						</div>
-					</div>
-
-					
-					<div class="license-item">
-						<div class="license-icon">
-							<i class="fas fa-id-badge"></i>
-						</div>
-						<div class="license-content">
-							<h3><a href="https://account.ncees.org/rn/2076739-1553832-6fdd2c0" target="_blank">Engineer in Training (EIT)</a></h3>
-							<div class="license-details">
-								<p>California Board for Professional Engineers, Land Surveyors, and Geologists</p>
-								<p class="license-date">November 2022</p>
-							</div>
-						</div>
-					</div>
-					
-					<div class="license-item">
-						<div class="license-icon">
-							<i class="fas fa-traffic-light"></i>
-						</div>
-						<div class="license-content">
-							<h3>Intelligent Transportation Systems (ITS) Certificate</h3>
-							<div class="license-details">
-								<p>University of California, Berkeley</p>
-								<p class="license-date">June 2021</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="publications" class="publications">
-			<div class="container">
-				<h2 class="section-title">Publications</h2>
-				<div class="publications-tabs">
-					<button class="tab-button active" data-tab="journals">Journal Publications</button>
-					<button class="tab-button" data-tab="dissertation">Dissertations</button>
-					<button class="tab-button" data-tab="conferences">Conference Proceedings</button>
-					<button class="tab-button" data-tab="books">Book Chapters</button>
-					<button class="tab-button" data-tab="reports">Research Reports</button>
-					<button class="tab-button" data-tab="datasets">Datasets</button>
-				</div>
-				
-				<div class="publications-content">
-					<div class="tab-content active" id="journals">
-						<div class="publication-list">
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>ACC, queue storage, and worrisome news for cities</h4>
-									<span class="year">2024</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> Godier, J. D., Cassidy, M. J., & Kan, X. D. (2024).</p>
-								<p class="journal">Transportation Research Part C: Emerging Technologies, 167, 104809</p>
-								<a href="https://doi.org/10.1016/j.trc.2024.104809" class="publication-link" target="_blank">View Publication</a>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Commercial Adaptive Cruise Control (ACC) and Capacity Drop at Freeway Bottlenecks</h4>
-									<span class="year">2024</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> Gong, Y., Murshed, M. T., & Kan, X. D. (2024).</p>
-								<p class="journal">International Journal of Transportation Science and Technology</p>
-								<a href="https://doi.org/10.1016/j.ijtst.2024.07.011" class="publication-link" target="_blank">View Publication</a>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>MicroSimACC: An open database for field experiments on the potential capacity impact of commercial Adaptive Cruise Control (ACC)</h4>
-									<span class="year">2024</span>
-								</div>
-								<p class="authors">Yang, M., Chon-Kan Munoz, P., <span class="author-name">Lapardhaja, S.,</span> Gong, Y., Imran, M. A., Murshed, M. T., Yagantekin, K., Khan, M. M. H., Kan, X. D., & Lee, C. (2024).</p>
-								<p class="journal">Transportmetrica A: Transport Science, 1-30</p>
-								<a href="https://doi.org/10.1080/23249935.2024.2349921" class="publication-link" target="_blank">View Publication</a>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Unlocking potential capacity benefits of electric vehicles (EVs) with adaptive cruise control (ACC)</h4>
-									<span class="year">2023</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> Yagantekin, K. U., Yang, M., Majumder, T. A., Kan, X. D., & Badhrudeen, M. (2023).</p>
-								<p class="journal">Transportmetrica B: Transport Dynamics, 11(1), 1894-1911</p>
-								<a href="https://doi.org/10.1080/21680566.2023.2271668" class="publication-link" target="_blank">View Publication</a>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Testing alternative treatments for underused carpool lanes on narrow freeways</h4>
-									<span class="year">2021</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> Jalota, D., Doig, J., Almubarak, A., & Cassidy, M. J. (2021).</p>
-								<p class="journal">Transportation Research Part A: Policy and Practice, 149, 139-149</p>
-								<a href="https://doi.org/10.1016/j.tra.2021.05.002" class="publication-link" target="_blank">View Publication</a>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Position determination of encoded and uncoded targets on the large hadron collider at CERN</h4>
-									<span class="year">2019</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> Lambrou, E. (2019).</p>
-								<p class="journal">Applied Geomatics, 11(4), 429-437</p>
-								<a href="https://doi.org/10.1007/s12518-019-00274-7" class="publication-link" target="_blank">View Publication</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-content" id="dissertation">
-						<div class="publication-list">
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Impacts of Adaptive Cruise Control on Urban Congestion: A Queuing Perspective</h4>
-									<span class="year">2023</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> (2023).</p>
-								<p class="journal">Ph.D. Dissertation, University of California, Berkeley</p>
-								<a href="https://escholarship.org/uc/item/5cf8s117" class="publication-link" target="_blank">View Dissertation</a>
-							</div>
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Position determination of encoded and uncoded targets on the large hadron collider at CERN</h4>
-									<span class="year">2019</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> (2019).</p>
-								<p class="journal">Diploma Thesis, National Technical University of Athens</p>
-								<a href="https://dspace.lib.ntua.gr/xmlui/bitstream/handle/123456789/49080/Report_Servet_Lapardhaja_final.pdf?sequence=1" class="publication-link" target="_blank">View Dissertation</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-content" id="conferences">
-						<div class="publication-list">
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Unlocking the Potential Congestion Relief from Electric Vehicles (EVs) - Field Experiments, Open Database, and Simulations of EVs with Adaptive Cruise Control (ACC)</h4>
-									<span class="year">2024</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> Yagantekin, K. U., Yang, M., & Kan, X. D. (2024).</p>
-								<p class="conference">4th IEEE Forum for Innovative Sustainable Transportation Systems FISTS 2024, 26-28 February, Riverside, California, USA. Paper No. 22</p>
-								<a href="https://doi.org/10.1109/FISTS60717.2024.10485597" class="publication-link" target="_blank">View Publication</a>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>MicrosimACC: An Open Database For Field Experiments On The Potential Capacity Impact Of Commercial Adaptive Cruise Control (ACC)</h4>
-									<span class="year">2023</span>
-								</div>
-								<p class="authors">Mingyuan, Y., <span class="author-name">Lapardhaja, S.,</span> & Kan, X. D. (2023).</p>
-								<p class="conference">26th IEEE International Conference on Intelligent Transportation Systems ITSC 2023, 24-28 September, Bilbao, Spain. Paper No. 869</p>
-								<a href="https://doi.org/10.1109/ITSC57777.2023.10421910" class="publication-link" target="_blank">View Publication</a>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Dynamic Curbside Management: Optimizing Supply and Demand at the Curb with New Data and Technologies</h4>
-									<span class="year">2023</span>
-								</div>
-								<p class="authors">Mitman, M., Montgomery, A. R., Gibler, T., Howell, A., Primus, J., Flores, M., & <span class="author-name">Lapardhaja, S.,</span> (2023).</p>
-								<p class="conference">Transportation Research Board 102nd Annual Meeting, 8-12 January, Washington D.C. Paper No. 23-00964</p>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Modeling CAV Car Following on Freeways and Arterials – Case Study of Adaptive Cruise Control (ACC) Equipped Vehicles</h4>
-									<span class="year">2022</span>
-								</div>
-								<p class="authors">Mingyuan, Y., <span class="author-name">Lapardhaja, S.,</span> Kan-Munoz, P. C., Murshed, M. T., Kan, X. D., Hao, L., & Xiao-Yun, L.</p>
-								<p class="conference">Transportation Research Board 101st Annual Meeting, 9-13 January, Washington, D.C. Paper No. 22-02452</p>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Field Experiment of Mixed Traffic - Interaction between Adaptive Cruise Control (ACC) and Human Drivers</h4>
-									<span class="year">2022</span>
-								</div>
-								<p class="authors">Yaobang, G., Kan-Munoz, P. C., <span class="author-name">Lapardhaja, S.,</span> Murshed, M. T., & Kan, X. D. (2022).</p>
-								<p class="conference">Transportation Research Board 101st Annual Meeting, 9-13 January, Washington, D.C. Paper No. 22-03779</p>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Impact of Commercially Available Automated Vehicles on Freeway Bottleneck Capacity</h4>
-									<span class="year">2021</span>
-								</div>
-								<p class="authors"><span class="author-name">Lapardhaja, S.,</span> Gong, Y., Murshed, M. T., & Kan, X. D. (2021).</p>
-								<p class="conference">Transportation Research Board 100th Annual Meeting, 5-29 January, Washington D.C. Paper No. 21-02087</p>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Field Experiments of Commercially Available Automated Vehicles on Freeways</h4>
-									<span class="year">2021</span>
-								</div>
-								<p class="authors">Kan-Munoz, P. C., <span class="author-name">Lapardhaja, S.,</span> & Kan, X. D. (2021).</p>
-								<p class="conference">Transportation Research Board 100th Annual Meeting, 5-29 January, Washington D.C. Paper No. 21-03778</p>
-							</div>
-
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Recent developments for a photogrammetric system to measure offsets to stretched wires at CERN</h4>
-									<span class="year">2018</span>
-								</div>
-								<p class="authors">Mergelkuhl, D., Vendeuvre, C., & <span class="author-name">Lapardhaja, S.,</span> (2018).</p>
-								<p class="conference">In Proceedings of the 15th International Workshop on Accelerator Alignment (IWAA), 8-12 October, Fermi National Accelerator Laboratory, Batavia, Illinois, USA</p>
-								<a href="https://indico.fnal.gov/event/16262/contributions/36457/attachments/22541/27959/IWAA2018_WirePhotogrammetry_Final.pdf" class="publication-link" target="_blank">View Publication</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-content" id="books">
-						<div class="publication-list">
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Monitoring of Bus Transit in Bay Area During COVID-19</h4>
-									<span class="year">2022</span>
-								</div>
-								<p class="authors">Kurzhanskiy, A., & <span class="author-name">Lapardhaja, S.,</span> (2022).</p>
-								<p class="journal">In Pandemic in the Metropolis: Transportation Impacts and Recovery (pp. 283-297)</p>
-								<a href="https://link.springer.com/chapter/10.1007/978-3-031-00148-2_18" class="publication-link" target="_blank">View Publication</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-content" id="reports">
-						<div class="publication-list">
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>Bus Operations of Three San Francisco Bay Area Transit Agencies during the First Year of the COVID-19 Pandemic</h4>
-									<span class="year">2022</span>
-								</div>
-								<p class="authors">Kurzhanskiy, A., & <span class="author-name">Lapardhaja, S.,</span> (2022).</p>
-								<a href="https://escholarship.org/uc/item/5cf8s117" class="publication-link" target="_blank">View Publication</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab-content" id="datasets">
-						<div class="publication-list">
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>MicrosimACC-EV</h4>
-								</div>
-								<p class="authors">Dataset for Electric Vehicles with Adaptive Cruise Control</p>
-								<a href="https://github.com/microSIM-ACC/EV" class="publication-link" target="_blank">View Dataset</a>
-							</div>
-							<div class="publication-item">
-								<div class="publication-header">
-									<h4>MicrosimACC-ICE</h4>
-								</div>
-								<p class="authors">Dataset for Internal Combustion Engine Vehicles with Adaptive Cruise Control</p>
-								<a href="https://github.com/microSIM-ACC/ICE" class="publication-link" target="_blank">View Dataset</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="projects" class="projects">
-			<div class="container">
-				<h2 class="section-title">Projects</h2>
-				<p class="projects-lead">Side projects and experiments—shipping UIs, crunching data, and wiring backends when it matters.</p>
-				<div class="projects-grid">
-					<article class="project-card">
-						<div class="project-card-top">
-							<span class="project-tag">React</span>
-							<span class="project-tag">Vite</span>
-							<span class="project-tag">JavaScript</span>
-							<span class="project-tag">MUI</span>
-							<span class="project-tag">Supabase</span>
-							<span class="project-tag">PostgreSQL</span>
-						</div>
-						<h3 class="project-title">Evenly</h3>
-						<p class="project-desc">Group expense splitting with clear balances and shareable summaries—built for fairness and speed.</p>
-						<div class="project-links">
-							<a href="https://evenly.lapardhaja.com/" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer">Live</a>
-							<a href="https://github.com/lapardhaja/Evenly" class="project-link project-link--secondary" target="_blank" rel="noopener noreferrer">Code</a>
-						</div>
-					</article>
-
-					<article class="project-card">
-						<div class="project-card-top">
-							<span class="project-tag">Python</span>
-							<span class="project-tag">Streamlit</span>
-							<span class="project-tag">OpenCV</span>
-							<span class="project-tag">Tesseract</span>
-							<span class="project-tag">Pillow</span>
-							<span class="project-tag">pandas</span>
-						</div>
-						<h3 class="project-title">Alcohol Label</h3>
-						<p class="project-desc">Computer-vision workflow to read bottle labels and surface structured product info in a Streamlit UI.</p>
-						<div class="project-links">
-							<a href="https://bottleproof.streamlit.app/" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer">Live</a>
-							<a href="https://github.com/lapardhaja/Alcohol-Label" class="project-link project-link--secondary" target="_blank" rel="noopener noreferrer">Code</a>
-						</div>
-					</article>
-
-					<article class="project-card">
-						<div class="project-card-top">
-							<span class="project-tag">JavaScript</span>
-							<span class="project-tag">HTML</span>
-							<span class="project-tag">CSS</span>
-						</div>
-						<h3 class="project-title">Mortgage Calculator</h3>
-						<p class="project-desc">Interactive scenarios for payments, amortization, and loan comparisons—handy for quick what-if analysis.</p>
-						<div class="project-links">
-							<a href="https://lapardhaja.com/Mortage-Calculator/" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer">Live</a>
-							<a href="https://github.com/lapardhaja/Mortage-Calculator" class="project-link project-link--secondary" target="_blank" rel="noopener noreferrer">Code</a>
-						</div>
-					</article>
-
-					<article class="project-card">
-						<div class="project-card-top">
-							<span class="project-tag">JavaScript</span>
-							<span class="project-tag">HTML</span>
-							<span class="project-tag">CSS</span>
-						</div>
-						<h3 class="project-title">MTA Lane Closure</h3>
-						<p class="project-desc">Lane-closure data and mapping for the <strong>Maine Turnpike Authority</strong>—working with closure records and corridor context for planning and ops.</p>
-						<div class="project-links">
-							<a href="https://lapardhaja.com/MTA-Lane-Closure/" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer">Live</a>
-							<a href="https://github.com/lapardhaja/MTA-Lane-Closure" class="project-link project-link--secondary" target="_blank" rel="noopener noreferrer">Code</a>
-						</div>
-					</article>
-
-					<article class="project-card">
-						<div class="project-card-top">
-							<span class="project-tag">HTML</span>
-							<span class="project-tag">JavaScript</span>
-							<span class="project-tag">D3.js</span>
-							<span class="project-tag">CSS</span>
-							<span class="project-tag">Python</span>
-						</div>
-						<h3 class="project-title">Visualizing Art</h3>
-						<p class="project-desc">Similarity-network graph of thousands of museum artworks (The Met pipeline in-repo): D3.js front end, Python embeddings and preprocessing, drill-down to metadata and full-res images.</p>
-						<div class="project-links">
-							<a href="https://art.hiokohime.workers.dev/" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer">Live</a>
-							<a href="https://github.com/lapardhaja/Visualizing-Art" class="project-link project-link--secondary" target="_blank" rel="noopener noreferrer">Code</a>
-						</div>
-					</article>
-				</div>
-			</div>
-		</section>
-
-		<section id="recognitions" class="recognitions">
-			<div class="container">
-				<h2 class="section-title">Recognitions</h2>
-				<div class="recognitions-grid">
-					<div class="recognition-item">
-						<div class="recognition-icon">
-							<i class="fas fa-trophy"></i>
-						</div>
-						<div class="recognition-content">
-							<h3>Thomaidio Award</h3>
-							<div class="details">
-								<p>Awarded for the highest GPA among all students in the School of Rural and Surveying Engineering (NTUA)</p>
-								<div class="recognition-years">
-									<span>2014-2015</span>
-									<span>2015-2016</span>
-									<span>2016-2017</span>
-									<span>2018-2019</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="recognition-item">
-						<div class="recognition-icon">
-							<i class="fas fa-medal"></i>
-						</div>
-						<div class="recognition-content">
-							<h3>Papakyriakopoulos Award</h3>
-							<div class="details">
-								<p>Awarded for the highest average grade in Mathematics (NTUA)</p>
-								<div class="recognition-years">
-									<span>2014-2015</span>
-									<span>2015-2016</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="recognition-item">
-						<div class="recognition-icon">
-							<i class="fas fa-scroll"></i>
-						</div>
-						<div class="recognition-content">
-							<h3>Kritikou Scholarship</h3>
-							<div class="details">
-								<p>Awarded for the highest average grade in Mathematics (NTUA)</p>
-								<div class="recognition-years">
-									<span>2014-2015</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="recognition-item">
-						<div class="recognition-icon">
-							<i class="fas fa-trophy"></i>
-						</div>
-						<div class="recognition-content">
-							<h3>Chrisovergi Award</h3>
-							<div class="details">
-								<p>Awarded for graduating 1st out of 135 students in the 2019 graduating class (NTUA)</p>
-								<div class="recognition-years">
-									<span>2019</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="recognition-item">
-						<div class="recognition-icon">
-							<i class="fas fa-trophy"></i>
-						</div>
-						<div class="recognition-content">
-							<h3>Academic Excellence Award</h3>
-							<div class="details">
-								<p>Awarded by the Greek State Scholarships Foundation for graduating 1st out of 135 students in the 2019 graduating class</p>
-								<div class="recognition-years">
-									<span>2019</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="recognition-item">
-						<div class="recognition-icon">
-							<i class="fas fa-trophy"></i>
-						</div>
-						<div class="recognition-content">
-							<h3>Lambadarios Award</h3>
-							<div class="details">
-								<p>Awarded by the Academy of Athens for the highest GPA in geodetic courses among all Polytechnic school graduates in Greece</p>
-								<div class="recognition-years">
-									<span>2018-2019</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="recognition-item">
-						<div class="recognition-icon">
-							<i class="fas fa-university"></i>
-						</div>
-						<div class="recognition-content">
-							<h3>UC Berkeley Fellowship</h3>
-							<div class="details">
-								<p>Full fellowship at the University of California, Berkeley</p>
-								<div class="recognition-years">
-									<span>2019-2020</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="recognition-item">
-						<div class="recognition-icon">
-							<i class="fas fa-scroll"></i>
-						</div>
-						<div class="recognition-content">
-							<h3>ITS California and CTF Scholarship</h3>
-							<div class="details">
-								<p>ITS California and California Transportation Foundation (CTF) Scholarship</p>
-								<div class="recognition-years">
-									<span>2022-2023</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="contact" class="contact">
-			<div class="container">
-				<h2 class="section-title">Contact</h2>
-				<p class="contact-lead">Reach out for collaborations, research, or questions.</p>
-				<div class="contact-info">
-					<div class="contact-details">
-						<p>Brooklyn, NY</p>
-						<p>Email: <a href="mailto:servetlap29@gmail.com">servetlap29@gmail.com</a></p>
-						<div class="social-links">
-							<a href="https://www.linkedin.com/in/servetlapardhaja/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</main>
-
-	<footer class="footer">
-		<div class="container footer-inner">
-			<p>&copy; 2026 Servet Lapardhaja. All rights reserved.</p>
-		</div>
-	</footer>
-
-	<script src="script.js"></script>
+    <section id="contact" class="section contact-section" aria-labelledby="contact-title">
+      <div class="site-width contact-layout" data-reveal>
+        <div class="contact-intro"><p class="contact-eyebrow">Professional inquiries</p><h2 id="contact-title">Contact</h2><p>For conversations about AI engineering, transportation systems, data, or research.</p></div>
+        <div class="contact-card"><p class="contact-label">Email</p><a class="contact-email" href="mailto:servetlap29@gmail.com">servetlap29@gmail.com</a><p class="contact-note">The best way to reach me for professional questions, collaboration, or research.</p><div class="contact-links"><a href="https://www.linkedin.com/in/servetlapardhaja/" target="_blank" rel="noopener"><span class="contact-link-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg><span>LinkedIn</span></span></a><a href="https://github.com/lapardhaja" target="_blank" rel="noopener"><span class="contact-link-heading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.53.12-3.19 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 6.8c1.02 0 2.05.14 3.01.4 2.29-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.89.12 3.19.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.93.43.37.81 1.08.81 2.18v3.23c0 .32.22.7.82.58A12 12 0 0 0 12 .3Z"/></svg><span>GitHub</span></span></a></div></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="site-width">© 2026 Servet Lapardhaja</div></footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
-

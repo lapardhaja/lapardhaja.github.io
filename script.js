@@ -1,161 +1,129 @@
-// Mobile Navigation Toggle
-const navToggle = document.querySelector('.nav-toggle')
-const navMenu = document.querySelector('.nav-menu')
+const menuButton = document.querySelector('.menu-toggle')
+const navigation = document.querySelector('.site-nav')
+const compactNavigation = window.matchMedia('(max-width: 900px)')
+const inlineDetailLayout = window.matchMedia('(max-width: 620px)')
 
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active')
-    navToggle.classList.toggle('active')
-})
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-        navMenu.classList.remove('active')
-        navToggle.classList.remove('active')
-    }
-})
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault()
-        const target = document.querySelector(this.getAttribute('href'))
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            })
-            // Close mobile menu after clicking
-            navMenu.classList.remove('active')
-            navToggle.classList.remove('active')
-        }
-    })
-})
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
+const setMenuOpen = open => {
+  if (!menuButton || !navigation) return
+  const isCompact = compactNavigation.matches
+  menuButton.setAttribute('aria-expanded', String(open))
+  menuButton.querySelector('.sr-only').textContent = open ? 'Close navigation' : 'Open navigation'
+  navigation.classList.toggle('is-open', open)
+  navigation.toggleAttribute('inert', isCompact && !open)
+  navigation.setAttribute('aria-hidden', String(isCompact && !open))
+  document.body.classList.toggle('menu-open', isCompact && open)
+  if (open && isCompact) requestAnimationFrame(() => navigation.querySelector('a')?.focus())
 }
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-            observer.unobserve(entry.target)
-        }
-    })
-}, observerOptions)
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section)
+menuButton?.addEventListener('click', () => setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true'))
+navigation?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)))
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+    setMenuOpen(false)
+    menuButton.focus()
+  }
 })
+compactNavigation.addEventListener('change', () => setMenuOpen(false))
+setMenuOpen(false)
 
-// Form submission handling
-const contactForm = document.querySelector('.contact-form')
-if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault()
-        
-        const formData = new FormData(contactForm)
-        const data = Object.fromEntries(formData)
-        
-        // Here you would typically send the data to your server
-        console.log('Form submitted:', data)
-        
-        // Show success message
-        const successMessage = document.createElement('div')
-        successMessage.className = 'success-message'
-        successMessage.textContent = 'Thank you for your message! I will get back to you soon.'
-        contactForm.appendChild(successMessage)
-        
-        // Reset form
-        contactForm.reset()
-        
-        // Remove success message after 5 seconds
-        setTimeout(() => {
-            successMessage.remove()
-        }, 5000)
-    })
+const scrollProgress = document.querySelector('[data-scroll-progress]')
+const updateScrollProgress = () => {
+  if (!scrollProgress) return
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight
+  const progress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0
+  scrollProgress.style.setProperty('--progress', String(Math.min(1, Math.max(0, progress))))
 }
 
-// Scroll progress + header elevation
-const header = document.querySelector('.header')
-const progressBar = document.querySelector('.progress-bar')
-
+let scrollProgressFrame = 0
 window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
-    const scrolled = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
-    if (progressBar) {
-        progressBar.style.width = scrolled + '%'
-    }
-    if (header) {
-        header.classList.toggle('is-scrolled', scrollTop > 24)
-    }
+  if (scrollProgressFrame) return
+  scrollProgressFrame = requestAnimationFrame(() => {
+    updateScrollProgress()
+    scrollProgressFrame = 0
+  })
 }, { passive: true })
+window.addEventListener('resize', updateScrollProgress)
+updateScrollProgress()
 
-// Add loading animation for images
-document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('load', () => {
-        img.classList.add('loaded')
+const initializeTabs = (selector, keys) => document.querySelectorAll(selector).forEach(root => {
+  const tabs = [...root.querySelectorAll('[role="tab"]')]
+  const panels = [...root.querySelectorAll('[role="tabpanel"]')]
+  const inlinePanels = root.matches('[data-experience], [data-education]')
+  const panelOrigins = new Map(panels.map(panel => [panel, { parent: panel.parentElement, nextSibling: panel.nextSibling }]))
+  const restorePanel = panel => {
+    const origin = panelOrigins.get(panel)
+    if (!origin) return
+    if (origin.nextSibling?.parentElement === origin.parent) origin.parent.insertBefore(panel, origin.nextSibling)
+    else origin.parent.append(panel)
+  }
+  const placePanel = (panel, tab) => {
+    if (inlinePanels && inlineDetailLayout.matches) tab.insertAdjacentElement('afterend', panel)
+    else restorePanel(panel)
+  }
+  const syncPanelPlacement = () => {
+    if (!inlinePanels || !inlineDetailLayout.matches) {
+      panels.forEach(restorePanel)
+      return
+    }
+    const selectedTab = tabs.find(tab => tab.getAttribute('aria-selected') === 'true')
+    const selectedPanel = panels.find(panel => panel.id === selectedTab?.getAttribute('aria-controls'))
+    if (selectedPanel && selectedTab) placePanel(selectedPanel, selectedTab)
+  }
+  const activate = (tab, { focus = false, revealPanel = false } = {}) => {
+    tabs.forEach(candidate => {
+      const selected = candidate === tab
+      candidate.setAttribute('aria-selected', String(selected))
+      candidate.tabIndex = selected ? 0 : -1
     })
+    const panel = panels.find(candidate => candidate.id === tab.getAttribute('aria-controls'))
+    panels.forEach(candidate => candidate.hidden = candidate !== panel)
+    if (panel) placePanel(panel, tab)
+    if (focus) tab.focus()
+    if (revealPanel && panel) requestAnimationFrame(() => panel.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }))
+  }
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activate(tab, { revealPanel: (root.matches('[data-experience]') && compactNavigation.matches) || (root.matches('[data-education]') && inlineDetailLayout.matches) }))
+    tab.addEventListener('keydown', event => {
+      if (!keys.includes(event.key)) return
+      event.preventDefault()
+      const delta = ['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + delta + tabs.length) % tabs.length
+      activate(tabs[next], { focus: true, revealPanel: (root.matches('[data-experience]') && compactNavigation.matches) || (root.matches('[data-education]') && inlineDetailLayout.matches) })
+    })
+  })
+  inlineDetailLayout.addEventListener('change', syncPanelPlacement)
+  syncPanelPlacement()
 })
 
-// Add hover effect for skill items
-document.querySelectorAll('.skill-category li').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'translateX(10px)'
-        item.style.transition = 'transform 0.3s ease'
-    })
-    
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'translateX(0)'
-    })
+initializeTabs('[data-experience]', ['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft', 'Home', 'End'])
+initializeTabs('[data-education]', ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'])
+initializeTabs('[data-publications]', ['ArrowLeft', 'ArrowRight', 'Home', 'End'])
+
+document.querySelectorAll('.publication-card').forEach(card => {
+  const source = card.querySelector(':scope > a[href]')
+  if (!source) return
+  card.classList.add('is-linkable')
+  card.addEventListener('click', event => {
+    if (event.target.closest('a, button')) return
+    if (window.getSelection()?.toString()) return
+    source.click()
+  })
 })
 
-// Publications Tab Switching
-document.addEventListener('DOMContentLoaded', function() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return
+    entry.target.classList.add('is-visible')
+    revealObserver.unobserve(entry.target)
+  })
+}, { threshold: .12 })
+document.querySelectorAll('[data-reveal]').forEach(element => revealObserver.observe(element))
 
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons and contents
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            // Add active class to clicked button and corresponding content
-            button.classList.add('active');
-            const tabId = button.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
-});
-
-// Experience section collapsible boxes
-document.querySelectorAll('.timeline-content').forEach(box => {
-    box.addEventListener('click', () => {
-        // Close all other boxes
-        document.querySelectorAll('.timeline-content').forEach(otherBox => {
-            if (otherBox !== box) {
-                otherBox.classList.remove('expanded');
-            }
-        });
-        // Toggle current box
-        box.classList.toggle('expanded');
-    });
-});
-
-// Recognition accordion: only one open at a time; click open card again to close
-document.querySelectorAll('.recognition-item').forEach(item => {
-    item.addEventListener('click', () => {
-        const wasOpen = item.classList.contains('expanded')
-        document.querySelectorAll('.recognition-item').forEach(el => el.classList.remove('expanded'))
-        if (!wasOpen) {
-            item.classList.add('expanded')
-        }
-    })
-}) 
+const navLinks = [...document.querySelectorAll('.site-nav a')]
+const sections = navLinks.map(link => document.querySelector(link.hash)).filter(Boolean)
+const navigationObserver = new IntersectionObserver(entries => {
+  const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+  if (!visible) return
+  navLinks.forEach(link => link.setAttribute('aria-current', String(link.hash === `#${visible.target.id}`)))
+}, { rootMargin: '-30% 0px -60% 0px', threshold: .01 })
+sections.forEach(section => navigationObserver.observe(section))
