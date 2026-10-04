@@ -31,4 +31,13 @@ Then open `http://localhost:8000`.
 
 ## Deployment
 
-The custom domain is configured through `CNAME`. Preserve that file when publishing through GitHub Pages.
+GitHub Pages deploys tagged releases through the `Deploy tagged version to GitHub Pages` workflow. The workflow checks out and publishes the exact tag that triggered it, such as `v1.0.0`.
+
+To publish a release, create and push a semantic version tag:
+
+```sh
+git tag -a v1.0.0 -m "Release v1.0.0"
+git push origin v1.0.0
+```
+
+To publish an existing version again, run the workflow from the Actions tab and enter its tag. In repository Settings → Pages, set the publishing source to **GitHub Actions**. The workflow includes `CNAME` and the site assets in its deployment artifact.
