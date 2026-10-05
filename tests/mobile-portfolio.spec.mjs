@@ -28,6 +28,21 @@ test('keeps the redesigned long-scroll page inside a phone viewport', async ({ p
   await expect(contact.getByRole('link', { name: 'servetlap29@gmail.com' })).toBeVisible()
   await expect(contact.getByRole('link', { name: /LinkedIn/ })).toBeVisible()
   await expect(contact.getByRole('link', { name: /GitHub/ })).toBeVisible()
+  const emailLayout = await contact.locator('.contact-email').evaluate(email => {
+    const card = email.closest('.contact-card')
+    const cardStyle = getComputedStyle(card)
+    const availableWidth = card.clientWidth - parseFloat(cardStyle.paddingLeft) - parseFloat(cardStyle.paddingRight)
+    return {
+      height: email.getBoundingClientRect().height,
+      lineHeight: parseFloat(getComputedStyle(email).lineHeight),
+      emailWidth: email.scrollWidth,
+      availableWidth,
+      whiteSpace: getComputedStyle(email).whiteSpace
+    }
+  })
+  expect(emailLayout.whiteSpace).toBe('nowrap')
+  expect(emailLayout.height).toBeLessThanOrEqual(emailLayout.lineHeight + 1)
+  expect(emailLayout.emailWidth).toBeLessThanOrEqual(emailLayout.availableWidth + 1)
   const contactBounds = await contact.locator('.contact-intro, .contact-card').evaluateAll(elements => elements.map(element => {
     const bounds = element.getBoundingClientRect()
     return { left: bounds.left, right: bounds.right }
@@ -107,7 +122,7 @@ test('uses tablet width for two clear navigation columns', async ({ page }, test
   expect(Math.abs(experience.top - about.top)).toBeLessThan(2)
 })
 
-test('fits the compact phone menu in two columns without inner scrolling', async ({ page }, testInfo) => {
+test('uses one scrollable column for the compact phone menu', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'small-phone-320', 'Compact phone navigation coverage uses the small-phone profile.')
   await page.setViewportSize({ width: 375, height: 432 })
   await page.locator('.menu-toggle').click()
@@ -115,12 +130,12 @@ test('fits the compact phone menu in two columns without inner scrolling', async
     const { left, top } = link.getBoundingClientRect()
     return { left, top }
   }))
-  expect(links[1].left).toBeGreaterThan(links[0].left)
-  expect(Math.abs(links[0].top - links[1].top)).toBeLessThan(2)
+  expect(Math.abs(links[0].left - links[1].left)).toBeLessThan(2)
+  expect(links[1].top).toBeGreaterThan(links[0].top)
   const linkHeight = await page.locator('.site-nav a').first().evaluate(link => link.getBoundingClientRect().height)
   expect(linkHeight).toBeGreaterThanOrEqual(44)
   const navSize = await page.locator('.site-nav').evaluate(nav => ({ scrollHeight: nav.scrollHeight, clientHeight: nav.clientHeight }))
-  expect(navSize.scrollHeight).toBeLessThanOrEqual(navSize.clientHeight)
+  expect(navSize.scrollHeight).toBeGreaterThan(navSize.clientHeight)
 })
 
 test('keeps institution-logo role and publication controls usable by touch', async ({ page }, testInfo) => {
