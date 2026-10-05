@@ -18,7 +18,7 @@ a:focus-visible,button:focus-visible { outline:2px solid var(--gold-light); outl
 
 .site-header { position:sticky; z-index:10; top:0; display:flex; align-items:center; min-height:var(--header); padding:0 max(2.5rem, calc((100vw - var(--page-max-width)) / 2)); color:var(--paper); border-bottom:1px solid var(--line); background:var(--surface-canvas); }
 .wordmark { display:flex; align-items:center; gap:.8rem; flex:0 0 auto; color:var(--paper); text-decoration:none; }
-.wordmark > span { display:grid; width:42px; height:42px; place-items:center; color:var(--navy); background:var(--gold); font:500 .76rem/1 var(--mono); }
+.wordmark > img { width:48px; height:48px; object-fit:contain; }
 .wordmark b { max-width:150px; color:var(--paper); font:700 .94rem/1.1 var(--sans); letter-spacing:-.025em; }
 .site-nav { display:flex; align-items:center; justify-content:flex-end; gap:clamp(.95rem,1.6vw,1.8rem); width:100%; margin-left:auto; }
 .site-nav a { position:relative; padding:.45rem 0; color:var(--muted); font:500 .9rem/1.2 var(--sans); letter-spacing:-.005em; text-decoration:none; }
