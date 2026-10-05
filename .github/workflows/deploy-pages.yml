@@ -54,16 +54,31 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare site files
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Build selected site version
+        id: site
+        shell: bash
         run: |
-          mkdir _site
-          cp index.html 404.html styles.css script.js robots.txt sitemap.xml CNAME _site/
-          cp -R images _site/images
+          if node -e "process.exit(require('./package.json').scripts?.build ? 0 : 1)"; then
+            npm ci
+            npm run build
+            echo "path=dist" >> "$GITHUB_OUTPUT"
+          else
+            mkdir _site
+            cp index.html 404.html styles.css script.js robots.txt sitemap.xml CNAME _site/
+            cp -R images _site/images
+            echo "path=_site" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          path: ${{ steps.site.outputs.path }}
 
       - name: Deploy to GitHub Pages
         id: deployment

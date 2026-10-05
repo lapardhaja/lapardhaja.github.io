@@ -1,5 +1,7 @@
 import { expect, test } from '@playwright/test'
 
+const projectWidth = testInfo => testInfo.project.use.viewport?.width ?? 1440
+
 test.beforeEach(async ({ page }) => {
   await page.goto('/')
 })
@@ -37,7 +39,7 @@ test('keeps the redesigned long-scroll page inside a phone viewport', async ({ p
 })
 
 test('keeps the portrait with the name before the mobile introduction', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === 'desktop-chromium', 'This is phone-specific coverage.')
+  test.skip(projectWidth(testInfo) > 900, 'The stacked portrait layout applies below 900px.')
   const { name, portrait, role } = await page.locator('.hero').evaluate(element => {
     const heading = element.querySelector('h1').getBoundingClientRect()
     const image = element.querySelector('.hero-portrait').getBoundingClientRect()
@@ -52,15 +54,28 @@ test('keeps the portrait with the name before the mobile introduction', async ({
   expect(role.top).toBeGreaterThanOrEqual(portrait.bottom)
 })
 
+test('keeps the hero photo in its rectangular 5:7 frame', async ({ page }) => {
+  const ratio = await page.locator('.hero-portrait > img').evaluate(image => {
+    return image.offsetWidth / image.offsetHeight
+  })
+  expect(ratio).toBeCloseTo(5 / 7, 2)
+})
+
 test('opens a touch-safe menu and navigates to experience', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === 'desktop-chromium', 'This is phone-specific coverage.')
-  const menu = page.getByRole('button', { name: 'Open navigation' })
+  test.skip(projectWidth(testInfo) > 900, 'The full-screen menu applies below 900px.')
+  const menu = page.locator('.menu-toggle')
   await expect(menu).toHaveCSS('width', '48px')
   await expect(menu).toHaveCSS('height', '48px')
+  await expect(menu).toHaveAccessibleName('Open navigation')
   await expect(page.locator('.site-nav')).toHaveAttribute('inert', '')
   await menu.click()
-  await expect(page.getByRole('button', { name: 'Close navigation' })).toBeVisible()
+  await expect(menu).toHaveAccessibleName('Close navigation')
+  await expect(menu).toBeFocused()
+  await expect(menu).toHaveCSS('position', 'fixed')
+  await expect(page.locator('.mobile-nav-heading, .mobile-nav-close')).toHaveCount(0)
   await expect(page.locator('body')).toHaveClass(/menu-open/)
+  await expect(page.locator('html')).toHaveClass(/menu-open/)
+  await expect(page.locator('html')).toHaveCSS('overflow-y', 'hidden')
   await expect(page.locator('.scroll-progress')).toHaveCSS('opacity', '0')
   const menuBounds = await page.locator('.site-nav').evaluate(element => {
     const bounds = element.getBoundingClientRect()
@@ -69,10 +84,43 @@ test('opens a touch-safe menu and navigates to experience', async ({ page }, tes
   expect(menuBounds.top).toBe(0)
   expect(menuBounds.bottom).toBeGreaterThanOrEqual(menuBounds.viewportHeight)
   expect(menuBounds.height).toBeGreaterThanOrEqual(menuBounds.viewportHeight)
-  await expect(page.getByRole('link', { name: 'About', exact: true })).toBeFocused()
+  const closeControlTop = await menu.evaluate(element => element.getBoundingClientRect().top)
+  await page.locator('.site-nav').evaluate(element => element.scrollTop = element.scrollHeight)
+  await expect.poll(() => menu.evaluate(element => element.getBoundingClientRect().top)).toBe(closeControlTop)
+  await menu.click()
+  await expect(page.locator('body')).not.toHaveClass(/menu-open/)
+  await expect(page.locator('.site-nav')).toHaveAttribute('inert', '')
+  await menu.click()
   await page.getByRole('link', { name: 'Experience', exact: true }).click()
   await expect(page).toHaveURL(/#experience$/)
   await expect(page.locator('#experience')).toBeInViewport()
+})
+
+test('uses tablet width for two clear navigation columns', async ({ page }, testInfo) => {
+  test.skip(projectWidth(testInfo) <= 620 || projectWidth(testInfo) > 900, 'Two-column navigation applies to tablets.')
+  await page.locator('.menu-toggle').click()
+  const [about, experience] = await page.locator('.site-nav a').evaluateAll(links => links.slice(0, 2).map(link => {
+    const { left, top } = link.getBoundingClientRect()
+    return { left, top }
+  }))
+  expect(experience.left).toBeGreaterThan(about.left)
+  expect(Math.abs(experience.top - about.top)).toBeLessThan(2)
+})
+
+test('fits the compact phone menu in two columns without inner scrolling', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'small-phone-320', 'Compact phone navigation coverage uses the small-phone profile.')
+  await page.setViewportSize({ width: 375, height: 432 })
+  await page.locator('.menu-toggle').click()
+  const links = await page.locator('.site-nav a').evaluateAll(items => items.slice(0, 2).map(link => {
+    const { left, top } = link.getBoundingClientRect()
+    return { left, top }
+  }))
+  expect(links[1].left).toBeGreaterThan(links[0].left)
+  expect(Math.abs(links[0].top - links[1].top)).toBeLessThan(2)
+  const linkHeight = await page.locator('.site-nav a').first().evaluate(link => link.getBoundingClientRect().height)
+  expect(linkHeight).toBeGreaterThanOrEqual(44)
+  const navSize = await page.locator('.site-nav').evaluate(nav => ({ scrollHeight: nav.scrollHeight, clientHeight: nav.clientHeight }))
+  expect(navSize.scrollHeight).toBeLessThanOrEqual(navSize.clientHeight)
 })
 
 test('keeps institution-logo role and publication controls usable by touch', async ({ page }, testInfo) => {
@@ -117,7 +165,7 @@ test('keeps institution-logo role and publication controls usable by touch', asy
 })
 
 test('shows every experience position in a vertical mobile list and reveals the selected role', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === 'desktop-chromium', 'This is phone-specific coverage.')
+  test.skip(projectWidth(testInfo) > 900, 'The vertical position list applies below 900px.')
   const experience = page.locator('#experience')
   const roleRail = experience.locator('.role-rail')
   await roleRail.scrollIntoViewIfNeeded()
@@ -145,7 +193,7 @@ test('shows every experience position in a vertical mobile list and reveals the 
 })
 
 test('expands selected mobile details inline and keeps publication categories in view', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === 'desktop-chromium', 'This is phone-specific coverage.')
+  test.skip(projectWidth(testInfo) > 620, 'Inline details and the compact publication grid apply below 620px.')
 
   await expect(page.locator('#role-treasury')).toBeVisible()
   expect(await page.locator('#role-treasury').evaluate(element => element.parentElement.className)).toBe('role-rail')
@@ -179,7 +227,7 @@ test('expands selected mobile details inline and keeps publication categories in
 })
 
 test('reveals degree details and makes available credentials clickable', async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === 'desktop-chromium', 'This is phone-specific coverage.')
+  test.skip(projectWidth(testInfo) > 620, 'The compact degree cards apply below 620px.')
   await page.locator('#education-tab-phd').evaluate(element => element.scrollIntoView({ block: 'center' }))
   await expect(page.locator('#education-tab-phd')).toHaveAttribute('aria-selected', 'true')
   await expect(page.locator('#education-phd')).toBeVisible()

@@ -52,21 +52,24 @@
 
   <main id="main">
     <section id="top" class="hero" aria-labelledby="home-title">
+      <div id="hero-aurora" class="hero-aurora" aria-hidden="true"></div>
       <div class="hero-grid-lines" aria-hidden="true"></div>
       <div class="site-width hero-inner">
-        <p class="section-index">Engineering portfolio</p>
-        <h1 id="home-title">Servet Lapardhaja, Ph.D., P.E.</h1>
         <div class="hero-layout">
+          <div class="hero-heading" data-reveal>
+            <p class="section-index">Engineering portfolio</p>
+            <h1 id="home-title">Servet Lapardhaja, Ph.D., P.E.</h1>
+          </div>
           <div class="hero-copy" data-reveal>
             <p class="hero-role">AI Engineer <span aria-hidden="true">·</span> Licensed Professional Civil Engineer</p>
             <p class="hero-summary">I design dependable AI, data, and engineering systems—grounded in research, shaped by real users, and built to be useful.</p>
             <div class="hero-actions"><a class="button button-gold" href="#experience">View experience</a><a class="quiet-link" href="#about">A little more about me</a></div>
-            <dl class="hero-credentials"><div><dt>Based in</dt><dd>New York City</dd></div><div><dt>Current focus</dt><dd>AI &amp; data systems</dd></div></dl>
           </div>
           <figure class="hero-portrait" data-reveal itemscope itemtype="https://schema.org/Person" itemid="https://lapardhaja.com/#person">
             <img src="images/servet-lapardhaja-portrait.jpg" alt="Portrait of Servet Lapardhaja" width="1000" height="1400" fetchpriority="high" itemprop="image">
             <figcaption><img src="images/treasury-seal.png" alt="" loading="lazy" decoding="async"><div class="employer-copy"><span>Currently at</span><strong>U.S. Department of the Treasury</strong><small>AI Engineer</small></div></figcaption>
           </figure>
+          <dl class="hero-credentials" data-reveal><div><dt>Based in</dt><dd>New York City</dd></div><div><dt>Current focus</dt><dd>AI &amp; data systems</dd></div></dl>
         </div>
       </div>
     </section>
@@ -257,6 +260,7 @@
     </section>
   </main>
   <footer class="site-footer"><div class="site-width">© 2026 Servet Lapardhaja</div></footer>
-  <script src="script.js" defer></script>
+  <script type="module" src="/script.js"></script>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

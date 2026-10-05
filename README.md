@@ -13,25 +13,20 @@ Personal portfolio for Dr. Servet Lapardhaja, an AI and transportation engineer 
 
 ## Stack
 
-The site is intentionally lightweight:
-
-- Semantic HTML
-- Modern CSS
-- Dependency-free JavaScript
-- Static hosting through GitHub Pages
+The page content remains semantic HTML and is delivered as a static site. Vite bundles the site JavaScript and the React-powered portfolio map; the tagged GitHub Pages workflow builds those files before publishing them.
 
 ## Run locally
 
 ```sh
-cd '/Users/lapardhajaS/Desktop/servet website/lapardhaja.github.io-main'
-python3 -m http.server 8000
+npm ci
+npm run dev
 ```
 
-Then open `http://localhost:8000`.
+Then open `http://127.0.0.1:5173`. To create the same static output used by Pages, run `npm run build`; it writes the deployable site to `dist/`.
 
 ## Deployment
 
-GitHub Pages deploys tagged releases through the `Deploy tagged version to GitHub Pages` workflow. The workflow checks out and publishes the exact tag that triggered it, such as `v1.0.0`.
+GitHub Pages deploys tagged releases through the `Deploy tagged version to GitHub Pages` workflow. The workflow checks out the exact tag that triggered it, builds it when it has a build script, and publishes the static output. Older tags without a build script use the original file-copy deployment path.
 
 To publish a release, create and push a semantic version tag:
 

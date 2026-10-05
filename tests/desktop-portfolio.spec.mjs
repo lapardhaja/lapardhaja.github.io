@@ -24,7 +24,8 @@ test('advances the gold scroll line as the page moves', async ({ page }, testInf
   const progressLine = page.locator('[data-scroll-progress]')
   await expect(progressLine).toBeVisible()
   await expect(progressLine).toHaveCSS('height', '3px')
-  await expect(progressLine.locator('span')).toHaveCSS('background-image', /gradient/)
+  await expect(progressLine.locator('span')).toHaveCSS('background-color', 'rgb(225, 174, 67)')
+  await expect(progressLine.locator('span')).toHaveCSS('background-image', 'none')
 
   const initial = await progressLine.evaluate(element => Number(element.style.getPropertyValue('--progress')))
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))

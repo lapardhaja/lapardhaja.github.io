@@ -2,6 +2,17 @@ const menuButton = document.querySelector('.menu-toggle')
 const navigation = document.querySelector('.site-nav')
 const compactNavigation = window.matchMedia('(max-width: 900px)')
 const inlineDetailLayout = window.matchMedia('(max-width: 620px)')
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+const panelAnimations = new WeakMap()
+
+const animatePanel = panel => {
+  if (prefersReducedMotion.matches || typeof panel.animate !== 'function') return
+  panelAnimations.get(panel)?.cancel()
+  panelAnimations.set(panel, panel.animate(
+    [{ opacity: 0, transform: 'translateY(7px)' }, { opacity: 1, transform: 'translateY(0)' }],
+    { duration: 190, easing: 'cubic-bezier(.22,1,.36,1)' }
+  ))
+}
 
 const setMenuOpen = open => {
   if (!menuButton || !navigation) return
@@ -11,8 +22,10 @@ const setMenuOpen = open => {
   navigation.classList.toggle('is-open', open)
   navigation.toggleAttribute('inert', isCompact && !open)
   navigation.setAttribute('aria-hidden', String(isCompact && !open))
-  document.body.classList.toggle('menu-open', isCompact && open)
-  if (open && isCompact) requestAnimationFrame(() => navigation.querySelector('a')?.focus())
+  const lockPageScroll = isCompact && open
+  document.documentElement.classList.toggle('menu-open', lockPageScroll)
+  document.body.classList.toggle('menu-open', lockPageScroll)
+  if (open && isCompact) menuButton.focus({ preventScroll: true })
 }
 
 menuButton?.addEventListener('click', () => setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true'))
@@ -70,6 +83,7 @@ const initializeTabs = (selector, keys) => document.querySelectorAll(selector).f
     if (selectedPanel && selectedTab) placePanel(selectedPanel, selectedTab)
   }
   const activate = (tab, { focus = false, revealPanel = false } = {}) => {
+    const changed = tab.getAttribute('aria-selected') !== 'true'
     tabs.forEach(candidate => {
       const selected = candidate === tab
       candidate.setAttribute('aria-selected', String(selected))
@@ -78,8 +92,9 @@ const initializeTabs = (selector, keys) => document.querySelectorAll(selector).f
     const panel = panels.find(candidate => candidate.id === tab.getAttribute('aria-controls'))
     panels.forEach(candidate => candidate.hidden = candidate !== panel)
     if (panel) placePanel(panel, tab)
+    if (changed && panel) animatePanel(panel)
     if (focus) tab.focus()
-    if (revealPanel && panel) requestAnimationFrame(() => panel.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }))
+    if (revealPanel && panel) requestAnimationFrame(() => panel.scrollIntoView({ behavior: prefersReducedMotion.matches ? 'auto' : 'smooth', block: 'start' }))
   }
   tabs.forEach((tab, index) => {
     tab.addEventListener('click', () => activate(tab, { revealPanel: (root.matches('[data-experience]') && compactNavigation.matches) || (root.matches('[data-education]') && inlineDetailLayout.matches) }))
@@ -110,14 +125,21 @@ document.querySelectorAll('.publication-card').forEach(card => {
   })
 })
 
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return
-    entry.target.classList.add('is-visible')
-    revealObserver.unobserve(entry.target)
-  })
-}, { threshold: .12 })
-document.querySelectorAll('[data-reveal]').forEach(element => revealObserver.observe(element))
+const revealTargets = [...document.querySelectorAll('[data-reveal]')]
+if (!prefersReducedMotion.matches && 'IntersectionObserver' in window && revealTargets.length) {
+  revealTargets.filter(element => element.closest('#top')).forEach(element => element.classList.add('is-visible'))
+  document.documentElement.classList.add('motion-ready')
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return
+      entry.target.classList.add('is-visible')
+      revealObserver.unobserve(entry.target)
+    })
+  }, { threshold: .12 })
+  revealTargets.filter(element => !element.closest('#top')).forEach(element => revealObserver.observe(element))
+} else {
+  revealTargets.forEach(element => element.classList.add('is-visible'))
+}
 
 const navLinks = [...document.querySelectorAll('.site-nav a')]
 const sections = navLinks.map(link => document.querySelector(link.hash)).filter(Boolean)
