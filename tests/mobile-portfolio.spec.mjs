@@ -53,6 +53,23 @@ test('keeps the redesigned long-scroll page inside a phone viewport', async ({ p
   }
 })
 
+test('keeps the civil-engineer credential together on compact screens', async ({ page }, testInfo) => {
+  test.skip(projectWidth(testInfo) > 620, 'The compact hero treatment applies at 620px and below.')
+  const credentialRects = await page.locator('.hero-role').evaluate(role => {
+    const phrase = 'Licensed Professional Civil Engineer'
+    const walker = document.createTreeWalker(role, NodeFilter.SHOW_TEXT)
+    let node
+    while ((node = walker.nextNode()) && !node.textContent.includes(phrase)) {}
+    if (!node) return []
+    const start = node.textContent.indexOf(phrase)
+    const range = document.createRange()
+    range.setStart(node, start)
+    range.setEnd(node, start + phrase.length)
+    return Array.from(range.getClientRects(), rect => ({ top: rect.top, bottom: rect.bottom }))
+  })
+  expect(credentialRects).toHaveLength(1)
+})
+
 test('keeps the portrait with the name before the mobile introduction', async ({ page }, testInfo) => {
   test.skip(projectWidth(testInfo) > 900, 'The stacked portrait layout applies below 900px.')
   const { name, portrait, role } = await page.locator('.hero').evaluate(element => {

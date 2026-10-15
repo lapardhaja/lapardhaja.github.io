@@ -77,7 +77,7 @@ test('uses institution logos, natural positioning, degree details, and linked cr
   for (const logo of ['treasury-seal.png', 'hntb-logo.jpg', 'fehr-peers-logo.jpg', 'berkeley-logo.jpg', 'cern-logo.jpg', 'georgia-tech-logo.svg', 'ntua-logo.jpg']) {
     assert.match(html, new RegExp(`images/${logo.replace('.', '\\.')}`))
   }
-  assert.match(html, /AI Engineer <span aria-hidden="true">·<\/span> Licensed Professional Civil Engineer/)
+  assert.match(html, /<p class="hero-role"><span class="hero-role-primary">Lead AI Engineer<\/span><span class="hero-role-divider" aria-hidden="true">·<\/span><span class="hero-role-credential">Licensed Professional Civil Engineer<\/span><\/p>/)
   assert.match(html, /I earned both a Ph\.D\. and an M\.S\. in Civil and Environmental Engineering from UC Berkeley\./)
   assert.match(html, /<section id="licenses"/)
   assert.match(html, /Licensed Professional Civil Engineer/)
